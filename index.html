@@ -3,109 +3,355 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TUNE Radio</title>
+  <title>TUNE Radio · pv.tune.ea</title>
+  <meta name="description" content="TUNE Radio — FM-радио приложение. Обновления, поддержка и информация." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg0: #0c1210;
-      --bg1: #152019;
-      --ink: #e8f0ea;
-      --muted: #9bb0a2;
-      --accent: #3dd68c;
-      --line: rgba(232, 240, 234, 0.12);
+      --primary: #10bdf5;
+      --primary-dark: #058fd3;
+      --navy: #10213b;
+      --text: #23324a;
+      --muted: #68788f;
+      --bg: #f4fbff;
+      --card: #ffffff;
+      --line: #d9edf7;
+      --green: #35c879;
+      --accent: #6557e8;
+      --shadow: 0 18px 45px rgba(21, 126, 176, 0.13);
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Manrope, system-ui, sans-serif;
-      color: var(--ink);
+      min-height: 100vh;
+      font-family: Nunito, system-ui, sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(900px 500px at 12% -10%, rgba(61, 214, 140, 0.18), transparent 60%),
-        radial-gradient(700px 400px at 90% 10%, rgba(80, 140, 255, 0.12), transparent 55%),
-        linear-gradient(165deg, var(--bg0), var(--bg1));
+        radial-gradient(circle at 12% 8%, rgba(98, 197, 255, 0.22), transparent 34rem),
+        radial-gradient(circle at 88% 4%, rgba(129, 103, 255, 0.14), transparent 34rem),
+        linear-gradient(180deg, #fff 0%, #f4fbff 70%, #eef9ff 100%);
     }
-    .wrap {
-      max-width: 720px;
+    a { color: inherit; text-decoration: none; }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 14px 0;
+      background: rgba(247, 250, 255, 0.88);
+      border-bottom: 1px solid rgba(39, 58, 101, 0.10);
+      box-shadow: 0 8px 30px rgba(35, 53, 91, 0.07);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      width: min(1040px, 92%);
       margin: 0 auto;
-      padding: 12vh 1.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
-    .brand {
-      font-family: Syne, sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.6rem, 8vw, 4.2rem);
-      letter-spacing: -0.04em;
-      line-height: 0.95;
-      margin: 0 0 1rem;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .brand span { color: var(--accent); }
-    .lead {
-      margin: 0 0 2rem;
-      max-width: 28rem;
+    .logo-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, #11c5fa, #078fd5);
+      box-shadow: 0 8px 22px rgba(16, 189, 245, 0.28);
+    }
+    .logo strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .logo strong span { color: var(--primary-dark); }
+    .logo small {
+      display: block;
+      margin-top: 4px;
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.55;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-weight: 800;
+      color: #52657c;
+      font-size: 15px;
+    }
+    .nav-links a:hover { color: var(--primary-dark); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 16px;
+      font-weight: 900;
+      border: 1px solid transparent;
+      transition: 0.22s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #101820;
+      background: linear-gradient(135deg, #11c5fa, #078fd5);
+      box-shadow: 0 12px 25px rgba(4, 151, 214, 0.25);
+    }
+    .btn-ghost {
+      color: var(--primary-dark);
+      background: #fff;
+      border-color: #bde9f9;
+      box-shadow: 0 8px 20px rgba(25, 120, 170, 0.08);
+    }
+
+    .page {
+      width: min(1040px, 92%);
+      margin: 0 auto;
+      padding: 120px 0 72px;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 22px;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(23, 35, 63, 0.55);
+    }
+
+    .card {
+      border: 1px solid rgba(39, 58, 101, 0.14);
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(235, 240, 255, 0.88));
+      box-shadow: 0 22px 70px rgba(38, 55, 94, 0.12);
+      padding: 36px;
+    }
+    .card + .card { margin-top: 24px; }
+
+    .kicker {
+      display: inline-flex;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(101, 87, 232, 0.12);
+      color: #5849d5;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px 0 14px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #17233f;
+      font-weight: 900;
+    }
+    .lead {
+      font-size: clamp(17px, 2.2vw, 20px);
+      line-height: 1.65;
+      color: rgba(23, 35, 63, 0.76);
+      max-width: 40rem;
+    }
+    .meta {
+      margin-top: 18px;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(23, 35, 63, 0.55);
     }
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 3rem;
+      gap: 12px;
+      margin-top: 26px;
     }
-    a.btn {
+
+    h2 {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    p { line-height: 1.6; color: var(--muted); font-weight: 700; }
+    code {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #e8f9ff;
+      border: 1px solid #c6effc;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 700;
+      word-break: break-all;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .mini {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(21, 126, 176, 0.08);
+    }
+    .mini .ico {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      background: var(--primary-soft, #dff7ff);
+      color: var(--primary-dark);
+      font-size: 20px;
+    }
+    .mini strong {
+      display: block;
+      color: var(--navy);
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .mini span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
+      padding: 8px 12px;
       border-radius: 999px;
-      padding: 0.85rem 1.25rem;
-      border: 1px solid var(--line);
-      color: var(--ink);
-      background: rgba(255,255,255,0.04);
-      transition: transform .15s ease, background .15s ease;
+      font-size: 13px;
+      font-weight: 800;
+      background: #e8f9ff;
+      border: 1px solid #c6effc;
+      color: var(--primary-dark);
     }
-    a.btn:hover { transform: translateY(-1px); background: rgba(255,255,255,0.08); }
-    a.btn.primary {
-      background: var(--accent);
-      color: #062214;
-      border-color: transparent;
+    .pill.green {
+      background: rgba(53, 200, 121, 0.12);
+      border-color: rgba(53, 200, 121, 0.28);
+      color: #1f9a5a;
     }
-    section {
-      border-top: 1px solid var(--line);
-      padding-top: 1.5rem;
-      margin-top: 0.5rem;
+
+    footer {
+      width: min(1040px, 92%);
+      margin: 0 auto 40px;
+      color: rgba(23, 35, 63, 0.5);
+      font-size: 13px;
+      font-weight: 700;
     }
-    h2 {
-      font-family: Syne, sans-serif;
-      font-size: 1.1rem;
-      margin: 0 0 0.5rem;
-    }
-    p, li { color: var(--muted); line-height: 1.5; }
-    code {
-      font-size: 0.85em;
-      color: var(--ink);
-      word-break: break-all;
+
+    @media (max-width: 800px) {
+      .nav-links a:not(.btn) { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 24px; border-radius: 24px; }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <h1 class="brand">TUNE<span>.</span></h1>
-    <p class="lead">Радио-приложение · пакет <strong style="color:var(--ink)">pv.tune.ea</strong>. Обновления и информация с этого сайта.</p>
-    <div class="actions">
-      <a class="btn primary" href="https://t.me/tuneea_bot" target="_blank" rel="noopener">Telegram · @tuneea_bot</a>
-      <a class="btn" href="api/app/latest.json">Проверить latest.json</a>
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="./">
+        <div class="logo-mark">T</div>
+        <div>
+          <strong>TUNE<span>.</span></strong>
+          <small>FM Radio · pv.tune.ea</small>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#updates">Обновления</a>
+        <a href="#info">Информация</a>
+        <a class="btn btn-primary" href="https://t.me/tuneea_bot" target="_blank" rel="noopener">Telegram</a>
+      </nav>
     </div>
-    <section>
-      <h2>Обновления</h2>
-      <p>Приложение читает:<br /><code>https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/app/latest.json</code></p>
+  </header>
+
+  <main class="page">
+    <div class="breadcrumbs">
+      <span>TUNE</span>
+      <span>›</span>
+      <span>Радио</span>
+    </div>
+
+    <section class="card">
+      <div class="kicker">Актуально · pv.tune.ea</div>
+      <h1>TUNE Radio</h1>
+      <p class="lead">FM-радио приложение. Обновления, поддержка и справка — на этой странице. Связь через Telegram-бот.</p>
+      <div class="pill-row">
+        <span class="pill">пакет pv.tune.ea</span>
+        <span class="pill green">публичные обновления</span>
+        <span class="pill">@tuneea_bot</span>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://t.me/tuneea_bot" target="_blank" rel="noopener">Открыть @tuneea_bot</a>
+        <a class="btn btn-ghost" href="api/app/latest.json">latest.json</a>
+      </div>
+      <p class="meta">Сайт: tuneea.github.io · репозиторий публичный</p>
     </section>
-    <section>
-      <h2>Diagnostics</h2>
-      <p>Эндпоинт-заглушка: <code>/api/app/diagnostics.json</code>. GitHub Pages принимает только GET; POST-телеметрия в приложении отключена.</p>
+
+    <section class="card" id="info">
+      <h2>Разделы</h2>
+      <p>Коротко о том, что доступно рядом с приложением.</p>
+      <div class="grid">
+        <div class="mini">
+          <div class="ico">⬆</div>
+          <strong>Обновления</strong>
+          <span>Приложение проверяет latest.json и предлагает новую версию APK.</span>
+        </div>
+        <div class="mini">
+          <div class="ico">💬</div>
+          <strong>Поддержка</strong>
+          <span>Вопросы и связь — Telegram-бот @tuneea_bot.</span>
+        </div>
+        <div class="mini">
+          <div class="ico">🛠</div>
+          <strong>Diagnostics</strong>
+          <span>GET-заглушка на сайте. Отправка телеметрии из приложения выключена.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="updates">
+      <h2>URL обновлений</h2>
+      <p>Этот адрес прописан в приложении:</p>
+      <code>https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/app/latest.json</code>
+      <p style="margin-top:16px">Заглушка diagnostics:</p>
+      <code>https://tuneea.github.io/api/app/diagnostics.json</code>
     </section>
   </main>
+
+  <footer>© TUNE · github.com/tuneea</footer>
 </body>
 </html>
