@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TUNE Radio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg0: #0c1210;
+      --bg1: #152019;
+      --ink: #e8f0ea;
+      --muted: #9bb0a2;
+      --accent: #3dd68c;
+      --line: rgba(232, 240, 234, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: Manrope, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 500px at 12% -10%, rgba(61, 214, 140, 0.18), transparent 60%),
+        radial-gradient(700px 400px at 90% 10%, rgba(80, 140, 255, 0.12), transparent 55%),
+        linear-gradient(165deg, var(--bg0), var(--bg1));
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 12vh 1.5rem 4rem;
+    }
+    .brand {
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 8vw, 4.2rem);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin: 0 0 1rem;
+    }
+    .brand span { color: var(--accent); }
+    .lead {
+      margin: 0 0 2rem;
+      max-width: 28rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 0.85rem 1.25rem;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: rgba(255,255,255,0.04);
+      transition: transform .15s ease, background .15s ease;
+    }
+    a.btn:hover { transform: translateY(-1px); background: rgba(255,255,255,0.08); }
+    a.btn.primary {
+      background: var(--accent);
+      color: #062214;
+      border-color: transparent;
+    }
+    section {
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    h2 {
+      font-family: Syne, sans-serif;
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem;
+    }
+    p, li { color: var(--muted); line-height: 1.5; }
+    code {
+      font-size: 0.85em;
+      color: var(--ink);
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1 class="brand">TUNE<span>.</span></h1>
+    <p class="lead">Радио-приложение · пакет <strong style="color:var(--ink)">pv.tune.ea</strong>. Обновления и информация с этого сайта.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://t.me/tuneea_bot" target="_blank" rel="noopener">Telegram · @tuneea_bot</a>
+      <a class="btn" href="api/app/latest.json">Проверить latest.json</a>
+    </div>
+    <section>
+      <h2>Обновления</h2>
+      <p>Приложение читает:<br /><code>https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/app/latest.json</code></p>
+    </section>
+    <section>
+      <h2>Diagnostics</h2>
+      <p>Эндпоинт-заглушка: <code>/api/app/diagnostics.json</code>. GitHub Pages принимает только GET; POST-телеметрия в приложении отключена.</p>
+    </section>
+  </main>
+</body>
+</html>

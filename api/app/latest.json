@@ -1,0 +1,23 @@
+{
+  "packageName": "pv.tune.ea",
+  "versionCode": 8,
+  "versionName": "2.0",
+  "title": "TUNE Radio",
+  "changelog": "TUNE Radio · pv.tune.ea\nTelegram: @tuneea_bot",
+  "downloadUrl": "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/releases/FMRadio_v2.0-pv.tune.ea.apk",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "apkSize": 0,
+  "mandatory": false,
+  "minAndroidApi": 28,
+  "publishedAt": "2026-08-20",
+  "licenseControl": {
+    "status": "ok",
+    "issuedAtMs": 0,
+    "nonce": "",
+    "reason": "",
+    "revision": 0,
+    "sigVersion": "",
+    "signature": "",
+    "subject": ""
+  }
+}
