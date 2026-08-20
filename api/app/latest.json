@@ -6,9 +6,18 @@
   "changelog": "TUNE Radio 2.0\nFrameCodec JNI renamed to pv.tune.ea\nTelegram: @tuneea_bot",
   "downloadUrl": "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/releases/FMRadio_v2.0-mod2-pv.tune.ea.apk",
   "sha256": "c68fa59fe1492a20a0eabccd663c8ecdeb7b723f838f4b0de5bc2f9b397d9350",
-  "apkSize": 39,
+  "apkSize": 5671412,
   "mandatory": false,
   "minAndroidApi": 28,
   "publishedAt": "2026-08-20",
-  "licenseControl": { "status": "ok", "issuedAtMs": 0, "nonce": "", "reason": "", "revision": 0, "sigVersion": "", "signature": "", "subject": "" }
+  "licenseControl": {
+    "status": "ok",
+    "issuedAtMs": 0,
+    "nonce": "",
+    "reason": "",
+    "revision": 0,
+    "sigVersion": "",
+    "signature": "",
+    "subject": ""
+  }
 }
