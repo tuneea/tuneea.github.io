@@ -1,12 +1,12 @@
 {
   "packageName": "pv.tune.go",
-  "versionCode": 131,
-  "versionName": "0.7.7",
+  "versionCode": 132,
+  "versionName": "0.7.8",
   "title": "Tune GO",
-  "changelog": "Tune GO. Put a newer APK in releases/tune-go.apk and bump versionCode.",
-  "downloadUrl": "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/releases/tune-go.apk",
-  "sha256": "",
-  "apkSize": 0,
+  "changelog": "Tune GO 0.7.8 — test update (GPS names, chrome size).",
+  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tune-go-0.7.8/tune-go.apk",
+  "sha256": "d9d3c885d22eb52c80c28bb8b46b4fc64c7510f8732e1ef6dc914af64eea0ca4",
+  "apkSize": 66619673,
   "mandatory": false,
   "minAndroidApi": 28,
   "publishedAt": "2026-08-24"
