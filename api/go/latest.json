@@ -1,12 +1,12 @@
 {
   "packageName": "pv.tune.go",
-  "versionCode": 132,
-  "versionName": "0.7.8",
+  "versionCode": 133,
+  "versionName": "0.7.9",
   "title": "Tuneea",
-  "changelog": "Tuneea 0.7.8",
-  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.7.8/tuneea.apk",
-  "sha256": "d9d3c885d22eb52c80c28bb8b46b4fc64c7510f8732e1ef6dc914af64eea0ca4",
-  "apkSize": 66619673,
+  "changelog": "Wheel keys, auto-scan, local station names.",
+  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.7.9/tuneea.apk",
+  "sha256": "e50ea270d82ba0bea62bb035d6a0337dca0791f643e5d9e0f2805f399cffe4a3",
+  "apkSize": 66636125,
   "mandatory": false,
   "minAndroidApi": 28,
   "publishedAt": "2026-08-24"
