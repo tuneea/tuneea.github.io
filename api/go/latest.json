@@ -1,0 +1,13 @@
+{
+  "packageName": "pv.tune.go",
+  "versionCode": 131,
+  "versionName": "0.7.7",
+  "title": "рџ”Ґ Tune",
+  "changelog": "Tune GO. Put a newer APK in releases/tune-go.apk and bump versionCode.",
+  "downloadUrl": "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/releases/tune-go.apk",
+  "sha256": "",
+  "apkSize": 0,
+  "mandatory": false,
+  "minAndroidApi": 28,
+  "publishedAt": "2026-08-24"
+}
