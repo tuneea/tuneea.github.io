@@ -1,20 +1,40 @@
 # TUNE · tuneea.github.io
 
-Публичный сайт и API обновлений для **pv.tune.ea**.
+Публичный сайт и API обновлений.
 
 | Что | URL |
 |-----|-----|
 | Лендинг | https://tuneea.github.io/ |
-| Latest | https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/app/latest.json |
-| Diagnostics (GET stub) | https://tuneea.github.io/api/app/diagnostics.json |
+| Tune GO latest | https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/latest.json |
+| TUNE Radio latest | https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/app/latest.json |
 
-## Как выложить новую версию APK
+## Tune GO — как выложить новую версию
 
-1. Положи APK в `releases/`
-2. Посчитай sha256 и размер
-3. Обнови `api/app/latest.json` (`versionCode` > установленного в приложении, сейчас порог **8**)
-4. Commit + push
+APK **не** кладётся в git (файл ~67 МБ). Только GitHub Release.
 
-## Diagnostics
+Имя файла на GitHub всегда: **`tune-go.apk`**  
+Тег релиза: **`tune-go-{versionName}`** (например `tune-go-0.7.8`)
 
-POST на GitHub Pages не работает. В приложении отправка отключена; здесь только GET-заглушка.
+Из папки `Tune_GO_v1`:
+
+```bat
+android\gradlew.bat assembleDebug
+scripts\publish_update.bat
+```
+
+Можно передать свой APK и changelog:
+
+```bat
+scripts\publish_update.bat android\app\build\outputs\apk\debug\app-debug.apk "GPS names, auto-scan"
+```
+
+Скрипт:
+
+1. Берёт локальный `app-debug.apk`
+2. Заливает его в Release как `tune-go.apk`
+3. Пишет `api/go/latest.json` (versionCode, sha256, downloadUrl)
+4. Пушит **только json** в этот репозиторий
+
+`versionCode` в `latest.json` должен быть **больше**, чем в установленном приложении, иначе в Настройках будет «актуально».
+
+Не кладите keystore на GitHub.
