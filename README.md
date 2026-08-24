@@ -1,19 +1,19 @@
-# TUNE · tuneea.github.io
+# Tuneea · tuneea.github.io
 
 Публичный сайт и API обновлений.
 
 | Что | URL |
 |-----|-----|
 | Лендинг | https://tuneea.github.io/ |
-| Tune GO latest | https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/latest.json |
+| Tuneea latest | https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/latest.json |
 | TUNE Radio latest | https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/app/latest.json |
 
-## Tune GO — как выложить новую версию
+## Tuneea — как выложить новую версию
 
 APK **не** кладётся в git (файл ~67 МБ). Только GitHub Release.
 
-Имя файла на GitHub всегда: **`tune-go.apk`**  
-Тег релиза: **`tune-go-{versionName}`** (например `tune-go-0.7.8`)
+Имя файла на GitHub всегда: **`tuneea.apk`**  
+Тег релиза: **`tuneea-{versionName}`** (например `tuneea-0.7.8`)
 
 Из папки `Tune_GO_v1`:
 
@@ -31,7 +31,7 @@ scripts\publish_update.bat android\app\build\outputs\apk\debug\app-debug.apk "GP
 Скрипт:
 
 1. Берёт локальный `app-debug.apk`
-2. Заливает его в Release как `tune-go.apk`
+2. Заливает его в Release как `tuneea.apk`
 3. Пишет `api/go/latest.json` (versionCode, sha256, downloadUrl)
 4. Пушит **только json** в этот репозиторий
 

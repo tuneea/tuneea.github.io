@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TUNE · Tune GO · pv.tune.go</title>
-  <meta name="description" content="Tune GO и TUNE Radio — FM-радио. Актуальная версия APK, обновления и поддержка." />
+  <title>Tuneea · FM Radio</title>
+  <meta name="description" content="Tuneea — FM-радио. Актуальная версия APK, обновления и поддержка." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
@@ -286,12 +286,12 @@
       <a class="logo" href="./">
         <div class="logo-mark">T</div>
         <div>
-          <strong>TUNE<span>.</span></strong>
-          <small>Tune GO · pv.tune.go</small>
+          <strong>Tuneea</strong>
+          <small>Tuneea</small>
         </div>
       </a>
       <nav class="nav-links">
-        <a href="#go">Tune GO</a>
+        <a href="#go">Tuneea</a>
         <a href="#updates">Обновления</a>
         <a href="#info">Информация</a>
         <a class="btn btn-primary" href="https://t.me/tuneea_bot" target="_blank" rel="noopener">Telegram</a>
@@ -307,13 +307,13 @@
     </div>
 
     <section class="card" id="go">
-      <div class="kicker">Актуально · pv.tune.go</div>
-      <h1>Tune GO</h1>
+      <div class="kicker">Актуально · Tuneea</div>
+      <h1>Tuneea</h1>
       <p class="lead">FM-радио для ГУ и телефона. Приложение само проверяет обновления; здесь всегда лежит текущий APK.</p>
       <div class="pill-row">
         <span class="pill" id="go-ver">версия …</span>
         <span class="pill green">публичные обновления</span>
-        <span class="pill">пакет pv.tune.go</span>
+        <span class="pill">@tuneea_bot</span>
       </div>
       <div class="actions">
         <a class="btn btn-primary" id="go-dl" href="https://github.com/tuneea/tuneea.github.io/releases/latest">Скачать APK</a>
@@ -361,14 +361,14 @@
 
     <section class="card" id="updates">
       <h2>URL обновлений</h2>
-      <p>Tune GO (прописано в приложении):</p>
+      <p>Tuneea (прописано в приложении):</p>
       <code>https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/latest.json</code>
       <p style="margin-top:16px">TUNE Radio:</p>
       <code>https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/app/latest.json</code>
     </section>
   </main>
 
-  <footer>© TUNE · github.com/tuneea</footer>
+  <footer>© Tuneea · github.com/tuneea</footer>
   <script>
     fetch("api/go/latest.json", { cache: "no-store" })
       .then(function (r) { return r.json(); })
@@ -379,7 +379,7 @@
         if (ver && j.versionName) ver.textContent = "v" + j.versionName;
         if (dl && j.downloadUrl) {
           dl.href = j.downloadUrl;
-          dl.textContent = "Скачать Tune GO " + j.versionName;
+          dl.textContent = "Скачать Tuneea " + j.versionName;
         }
         if (meta) {
           var sizeMb = j.apkSize ? (j.apkSize / 1048576).toFixed(1) + " МБ" : "";
