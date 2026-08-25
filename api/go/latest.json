@@ -1,23 +1,13 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 143,
-  "versionName": "0.8.8",
+  "versionCode": 149,
+  "versionName": "0.8.14",
   "title": "Tuneea",
-  "changelog": "Mute с главного экрана. Руль только переключает станции. Короткие ID активации.",
-  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.8/tuneea.apk",
-  "sha256": "4374e16af48f66911117f551aca7e27a238b35aac1b6fc26b257da8f4a7c5763",
-  "apkSize": 13881966,
+  "changelog": "\",
+  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.14/tuneea.apk",
+  "sha256": "1ab33e8e66fa9eb0a737b4b17a2a7a79caed9a0dcad980a66dddef0d7b7d45f3",
+  "apkSize": 13881702,
   "mandatory": false,
   "minAndroidApi": 28,
-  "publishedAt": "2026-08-25",
-  "licenses": [
-    {
-      "id": "4Y656MDLSH",
-      "sig": "DYWZXJ6R4CZCJFY7HZ3BXGUPHTQWUN2DENCZTVGXVVR4ZGLYJSPXQOBSBOUWHCXUYC255JMJNOGYMKFZLFBUVZIJCWB4MM7TZOGXMDQ"
-    },
-    {
-      "id": "5ZHLMI6OCL",
-      "sig": "L5LRDS75HCJKXY5ZBO4QSGIQVY6MC4MLUNJYT7BCIILR3UXLMGRAVWD2TMVSENA4YCVZBPHPVDJTI33SS4I6QCNHDCKFJYOYRJYJYCA"
-    }
-  ]
+  "publishedAt": "2026-08-26"
 }
