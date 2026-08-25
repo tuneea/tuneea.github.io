@@ -1,13 +1,13 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 137,
-  "versionName": "0.8.3",
+  "versionCode": 140,
+  "versionName": "0.8.5",
   "title": "Tuneea",
-  "changelog": "Tuneea-0.8.3-release",
-  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.3/tuneea.apk",
-  "sha256": "d85751d8947b0d6b5f6f6190b1bffccba231a5b1d2d489e38b9ffe74cd705248",
-  "apkSize": 12336594,
+  "changelog": "Tuneea 0.8.5. After update enter the 10-digit code again.",
+  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.5/tuneea.apk",
+  "sha256": "e7799ac4ecfe26e096a593c0383d2e685e7c56bf03fca6f6b34bdc7e96cf9f0a",
+  "apkSize": 69018797,
   "mandatory": false,
   "minAndroidApi": 28,
-  "publishedAt": "2026-08-24"
+  "publishedAt": "2026-08-25"
 }
