@@ -15,7 +15,7 @@ APK **не** кладётся в git (файл ~67 МБ). Только GitHub Re
 Имя файла на GitHub всегда: **`tuneea.apk`**  
 Тег релиза: **`tuneea-{versionName}`** (например `tuneea-0.7.8`)
 
-Из папки `Tune_GO_v1`:
+Из этой папки (корень Tuneea):
 
 ```bat
 android\gradlew.bat assembleDebug

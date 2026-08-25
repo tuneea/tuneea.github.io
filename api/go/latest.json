@@ -1,13 +1,23 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 140,
-  "versionName": "0.8.5",
+  "versionCode": 141,
+  "versionName": "0.8.6",
   "title": "Tuneea",
-  "changelog": "Запросите код активации вновь у представителя.",
-  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.5/tuneea.apk",
-  "sha256": "7c1d2a8fd2f3bcf9d2ec008ca660c006d2c064f2aabc1e60d03573c161de58af",
-  "apkSize": 13880714,
+  "changelog": "Короткий ID активации — 10 символов.",
+  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.6/tuneea.apk",
+  "sha256": "839db149e618c4bb19c2928c17f0d70f8ed00077d3eebeb9e19a83af397a0f8b",
+  "apkSize": 13882026,
   "mandatory": false,
   "minAndroidApi": 28,
-  "publishedAt": "2026-08-25"
+  "publishedAt": "2026-08-25",
+  "licenses": [
+    {
+      "id": "TUNE4Y656MDLSHGJ44TGWG6Q",
+      "sig": "FWP5PLABWWRCIJ2H4NQQHLDPVYYO5UEWTQY2XSPNQ5J2SQXHV5EHWNMFGDEQ6AIFWMCM5XWZJHL3RODXWA2BYGIAX4T3TYKPN7NXIAY"
+    },
+    {
+      "id": "4Y656MDLSH",
+      "sig": "DYWZXJ6R4CZCJFY7HZ3BXGUPHTQWUN2DENCZTVGXVVR4ZGLYJSPXQOBSBOUWHCXUYC255JMJNOGYMKFZLFBUVZIJCWB4MM7TZOGXMDQ"
+    }
+  ]
 }
