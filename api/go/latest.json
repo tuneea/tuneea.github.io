@@ -5,8 +5,8 @@
   "title": "Tuneea",
   "changelog": "Запросите код активации вновь у представителя.",
   "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.5/tuneea.apk",
-  "sha256": "e7799ac4ecfe26e096a593c0383d2e685e7c56bf03fca6f6b34bdc7e96cf9f0a",
-  "apkSize": 69018797,
+  "sha256": "7c1d2a8fd2f3bcf9d2ec008ca660c006d2c064f2aabc1e60d03573c161de58af",
+  "apkSize": 13880714,
   "mandatory": false,
   "minAndroidApi": 28,
   "publishedAt": "2026-08-25"
