@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="../favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Интерфейс · Tune 🔥</title>
+  <meta name="description" content="Интерфейс Tune 🔥: удобство на ГУ, цветовые схемы, шрифты. Снимки с Toyota Camry 80 и Highlander 2025." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #10bdf5;
+      --primary-dark: #058fd3;
+      --navy: #10213b;
+      --text: #23324a;
+      --muted: #68788f;
+      --line: #d9edf7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: Nunito, system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(98, 197, 255, 0.22), transparent 34rem),
+        radial-gradient(circle at 88% 4%, rgba(129, 103, 255, 0.14), transparent 34rem),
+        linear-gradient(180deg, #fff 0%, #f4fbff 70%, #eef9ff 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 14px 0;
+      background: rgba(247, 250, 255, 0.88);
+      border-bottom: 1px solid rgba(39, 58, 101, 0.10);
+      box-shadow: 0 8px 30px rgba(35, 53, 91, 0.07);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      width: min(1040px, 92%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-mark {
+      width: 48px; height: 48px; border-radius: 16px;
+      display: grid; place-items: center; font-size: 26px; line-height: 1;
+      background: linear-gradient(160deg, #1a2738 0%, #0d1522 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 22px rgba(16, 33, 59, 0.28), 0 0 18px rgba(255, 140, 40, 0.22);
+    }
+    .logo strong {
+      display: block; font-size: 24px; font-weight: 900;
+      color: var(--navy); line-height: 1; letter-spacing: -0.02em;
+    }
+    .logo small {
+      display: block; margin-top: 4px; color: var(--muted);
+      font-size: 12px; font-weight: 800;
+    }
+    .nav-links { display: flex; gap: 22px; align-items: center; }
+    .nav-links a { font-weight: 800; color: #52657c; font-size: 15px; }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary-dark); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 22px; border-radius: 16px;
+      font-weight: 900; border: 1px solid transparent; transition: 0.22s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #101820;
+      background: linear-gradient(135deg, #11c5fa, #078fd5);
+      box-shadow: 0 12px 25px rgba(4, 151, 214, 0.25);
+    }
+    .btn-ghost {
+      color: var(--primary-dark); background: #fff;
+      border-color: #bde9f9; box-shadow: 0 8px 20px rgba(25, 120, 170, 0.08);
+    }
+
+    .page { width: min(1040px, 92%); margin: 0 auto; padding: 120px 0 72px; }
+    .breadcrumbs {
+      display: flex; gap: 8px; margin-bottom: 22px;
+      font-size: 14px; font-weight: 700; color: rgba(23, 35, 63, 0.55);
+    }
+    .breadcrumbs a:hover { color: var(--primary-dark); }
+
+    .card {
+      border: 1px solid rgba(39, 58, 101, 0.14);
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(235, 240, 255, 0.88));
+      box-shadow: 0 22px 70px rgba(38, 55, 94, 0.12);
+      padding: 36px;
+    }
+    .card + .card { margin-top: 24px; }
+
+    .kicker {
+      display: inline-flex; padding: 8px 13px; border-radius: 999px;
+      background: rgba(16, 189, 245, 0.14); color: var(--primary-dark);
+      font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    h1 {
+      margin: 16px 0 14px;
+      font-size: clamp(36px, 6vw, 54px);
+      line-height: 1.05; letter-spacing: -0.03em;
+      color: #17233f; font-weight: 900;
+    }
+    h2 {
+      font-size: clamp(22px, 3vw, 28px); font-weight: 900;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .lead {
+      font-size: clamp(17px, 2.2vw, 20px); line-height: 1.65;
+      color: rgba(23, 35, 63, 0.76); max-width: 42rem; font-weight: 700;
+    }
+    .note {
+      margin-top: 14px; font-size: 14px; font-weight: 700;
+      color: rgba(23, 35, 63, 0.55);
+    }
+
+    .points {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 24px;
+    }
+    .point {
+      padding: 18px; border-radius: 20px;
+      background: rgba(255,255,255,0.9); border: 1px solid var(--line);
+    }
+    .point strong { display: block; color: var(--navy); font-size: 16px; margin-bottom: 6px; }
+    .point span { color: var(--muted); font-size: 14px; font-weight: 700; line-height: 1.45; }
+
+    .gallery {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 14px; margin-top: 22px;
+    }
+    .shot {
+      margin: 0; border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--line); background: #0b1220;
+      box-shadow: 0 10px 28px rgba(21, 126, 176, 0.1);
+    }
+    .shot img {
+      display: block; width: 100%; height: auto;
+      aspect-ratio: 16 / 9; object-fit: cover; object-position: center top;
+    }
+    .shot figcaption {
+      padding: 12px 14px; background: #fff;
+      color: var(--muted); font-size: 13px; font-weight: 700; line-height: 1.4;
+    }
+    .shot.wide { grid-column: 1 / -1; }
+
+    .videos { display: grid; gap: 18px; margin-top: 18px; }
+    .video-block video {
+      display: block; width: 100%; border-radius: 18px;
+      border: 1px solid var(--line); background: #0b1220;
+      box-shadow: 0 10px 28px rgba(21, 126, 176, 0.1);
+    }
+    .video-block p {
+      margin-top: 10px; color: var(--muted); font-size: 14px; font-weight: 700;
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    footer {
+      width: min(1040px, 92%); margin: 0 auto 40px;
+      color: rgba(23, 35, 63, 0.5); font-size: 13px; font-weight: 700;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links a:not(.btn) { display: none; }
+      .points, .gallery { grid-template-columns: 1fr; }
+      .card { padding: 24px; border-radius: 24px; }
+      .shot.wide { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="../">
+        <div class="logo-mark" aria-hidden="true">🔥</div>
+        <div>
+          <strong>Tune</strong>
+          <small>FM для автомобиля</small>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../#features">Возможности</a>
+        <a class="active" href="./">Интерфейс</a>
+        <a href="../#how">Как начать</a>
+        <a href="../predstaviteli/">Представители</a>
+        <a class="btn btn-primary" href="https://t.me/tuneea_bot" target="_blank" rel="noopener">Telegram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="breadcrumbs">
+      <a href="../">🔥Tune</a>
+      <span>›</span>
+      <span>Интерфейс</span>
+    </div>
+
+    <section class="card">
+      <div class="kicker">ГУ · Camry 80 · Highlander 2025</div>
+      <h1>Интерфейс</h1>
+      <p class="lead">Крупные кнопки, понятные жесты и оформление под любой салон. Настройки под разные вариации экрана: цветовые гаммы, шрифты и раскладки.</p>
+      <p class="note">На снимках — Toyota Camry 80 и Highlander 2025.</p>
+
+      <div class="points">
+        <div class="point">
+          <strong>Удобство</strong>
+          <span>Всё под палец на ГУ: избранное, поиск, полный экран и кнопки на руле.</span>
+        </div>
+        <div class="point">
+          <strong>Цвета</strong>
+          <span>Десятки схем — от ночи и графита до алого, меди и сапфира.</span>
+        </div>
+        <div class="point">
+          <strong>Шрифты</strong>
+          <span>Размер S–XL и набор шрифтов: системный, с засечками, скрипт и другие.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Как выглядит на ГУ</h2>
+      <div class="gallery">
+        <figure class="shot wide">
+          <img src="media/home-visualizer.png" alt="Полный экран с визуализатором" loading="lazy" />
+          <figcaption>Полный экран и визуальный эквалайзер — яркость, прозрачность, стиль</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/home-favorites.png" alt="Главный экран с избранным" loading="lazy" />
+          <figcaption>Главный экран: избранное и крупные стрелки</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/home-bokeh.png" alt="Главный экран с фоном" loading="lazy" />
+          <figcaption>Чистый режим «сейчас играет»</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/layout-list.png" alt="Раскладка список справа" loading="lazy" />
+          <figcaption>Раскладка со списком станций</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/layout-list-cyan.png" alt="Список станций, циан" loading="lazy" />
+          <figcaption>Другая цветовая гамма — тот же удобный список</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/scale-green.png" alt="Шкала тюнера зелёная" loading="lazy" />
+          <figcaption>Шкала тюнера — станции на частотах</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/scale-orange.png" alt="Шкала тюнера оранжевая" loading="lazy" />
+          <figcaption>Та же шкала в тёплой схеме</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/colors.png" alt="Цветовые схемы" loading="lazy" />
+          <figcaption>Цветовые схемы под любой салон</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/fonts.png" alt="Выбор шрифта" loading="lazy" />
+          <figcaption>Шрифт и размер текста</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/settings.png" alt="Настройки оформления" loading="lazy" />
+          <figcaption>Оформление: тема, эквалайзер, положение кнопок</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="media/sound.png" alt="Настройки звука" loading="lazy" />
+          <figcaption>Звук: шумоподавление и эквалайзер</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Видео</h2>
+      <div class="videos">
+        <div class="video-block">
+          <video controls playsinline preload="metadata" poster="media/layout-list.png">
+            <source src="media/demo-interface.mp4" type="video/mp4" />
+          </video>
+          <p>Интерфейс в работе на ГУ</p>
+        </div>
+        <div class="video-block">
+          <video controls playsinline preload="metadata" poster="media/settings.png">
+            <source src="media/demo-time-correction.mp4" type="video/mp4" />
+          </video>
+          <p>Коррекция времени после сброса</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://t.me/tuneea_bot" target="_blank" rel="noopener">Получить активацию</a>
+        <a class="btn btn-ghost" href="../">На главную</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 🔥Tune</footer>
+</body>
+</html>
