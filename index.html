@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
+  <link rel="icon" href="favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tuneea — FM-радио для автомобиля</title>
-  <meta name="description" content="Tuneea — удобное FM-радио для головного устройства. Скачайте приложение, активируйте через Telegram и слушайте любимые станции." />
+  <title>Tune 🔥 — FM-радио для автомобиля</title>
+  <meta name="description" content="Tune 🔥 — удобное FM-радио для головного устройства. Скачайте приложение, активируйте через Telegram и слушайте любимые станции." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
@@ -61,18 +62,19 @@
       border-radius: 16px;
       display: grid;
       place-items: center;
-      font-weight: 900;
-      font-size: 18px;
-      color: #fff;
-      background: linear-gradient(135deg, #11c5fa, #078fd5);
-      box-shadow: 0 8px 22px rgba(16, 189, 245, 0.28);
+      font-size: 26px;
+      line-height: 1;
+      background: linear-gradient(160deg, #1a2738 0%, #0d1522 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 22px rgba(16, 33, 59, 0.28), 0 0 18px rgba(255, 140, 40, 0.22);
     }
     .logo strong {
       display: block;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 900;
       color: var(--navy);
       line-height: 1;
+      letter-spacing: -0.02em;
     }
     .logo small {
       display: block;
@@ -80,6 +82,16 @@
       color: var(--muted);
       font-size: 12px;
       font-weight: 800;
+    }
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-title .flame {
+      font-size: 0.82em;
+      line-height: 1;
+      filter: drop-shadow(0 0 10px rgba(255, 140, 40, 0.45));
     }
     .nav-links {
       display: flex;
@@ -291,9 +303,9 @@
   <header class="navbar">
     <div class="nav-inner">
       <a class="logo" href="./">
-        <div class="logo-mark">T</div>
+        <div class="logo-mark" aria-hidden="true">🔥</div>
         <div>
-          <strong>Tuneea</strong>
+          <strong>Tune</strong>
           <small>FM для автомобиля</small>
         </div>
       </a>
@@ -309,7 +321,7 @@
   <main class="page">
     <section class="card" id="go">
       <div class="kicker">FM-радио · для головного устройства</div>
-      <h1>Tuneea</h1>
+      <h1 class="brand-title"><span class="flame" aria-hidden="true">🔥</span>Tune</h1>
       <p class="lead">Современное FM-радио для автомобиля: удобный интерфейс, быстрый поиск станций и активация через Telegram.</p>
       <div class="actions">
         <a class="btn btn-primary" id="go-dl" href="https://github.com/tuneea/tuneea.github.io/releases/latest">Скачать приложение</a>
@@ -318,7 +330,7 @@
     </section>
 
     <section class="card" id="features">
-      <h2>Почему выбирают Tuneea</h2>
+      <h2>Почему выбирают Tune 🔥</h2>
       <p class="section-lead">Приложение сделано для штатных ГУ: крупный интерфейс, понятное управление и стабильная работа.</p>
       <div class="grid">
         <div class="mini">
@@ -361,7 +373,7 @@
           <div class="step-num">3</div>
           <div>
             <strong>Слушайте радио</strong>
-            <span>Введите код один раз — и пользуйтесь Tuneea без ограничений.</span>
+            <span>Введите код один раз — и пользуйтесь Tune 🔥 без ограничений.</span>
           </div>
         </div>
       </div>
@@ -393,7 +405,7 @@
     <section class="card">
       <div class="cta-band">
         <div>
-          <h2>Готовы поставить Tuneea?</h2>
+          <h2>Готовы поставить Tune 🔥?</h2>
           <p class="lead">Скачайте приложение и напишите в бот — поможем с активацией.</p>
         </div>
         <div class="actions" style="margin-top:0">
@@ -404,7 +416,7 @@
     </section>
   </main>
 
-  <footer>© Tuneea</footer>
+  <footer>© Tune 🔥</footer>
   <script>
     fetch("api/go/latest.json", { cache: "no-store" })
       .then(function (r) { return r.json(); })
