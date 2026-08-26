@@ -146,6 +146,7 @@
     .shot img {
       display: block; width: 100%; height: auto;
       object-fit: contain; background: #0b1220;
+      cursor: zoom-in;
     }
     .shot figcaption {
       padding: 12px 14px; background: #fff;
@@ -159,6 +160,70 @@
       background:
         linear-gradient(135deg, rgba(16,189,245,0.12), transparent 50%),
         #0b1220;
+      cursor: default;
+    }
+
+    .lightbox {
+      position: fixed; inset: 0; z-index: 1000;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(8, 14, 28, 0.92);
+      padding: 56px 64px 72px;
+      backdrop-filter: blur(8px);
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox-img {
+      max-width: min(96vw, 1400px);
+      max-height: calc(100vh - 120px);
+      width: auto; height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .lightbox-cap {
+      position: absolute; left: 50%; bottom: 18px;
+      transform: translateX(-50%);
+      max-width: min(90vw, 720px);
+      text-align: center;
+      color: rgba(255,255,255,0.88);
+      font-size: 14px; font-weight: 700;
+    }
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      display: grid; place-items: center;
+      border: none; color: #fff;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      transition: 0.18s;
+    }
+    .lightbox-close:hover,
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(17, 197, 250, 0.85);
+      color: #101820;
+    }
+    .lightbox-close {
+      top: 16px; right: 16px;
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      font-size: 28px; line-height: 1; font-weight: 700;
+    }
+    .lightbox-prev,
+    .lightbox-next {
+      top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      font-size: 28px; line-height: 1; font-weight: 700;
+    }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-count {
+      position: absolute; top: 22px; left: 20px;
+      color: rgba(255,255,255,0.75);
+      font-size: 13px; font-weight: 800;
     }
 
     .videos { display: grid; gap: 18px; margin-top: 18px; }
@@ -205,6 +270,12 @@
       .card { padding: 24px; border-radius: 24px; }
       .shot.wide { grid-column: auto; }
       .car-btn { width: 100%; }
+      .lightbox { padding: 64px 12px 80px; }
+      .lightbox-prev, .lightbox-next {
+        top: auto; bottom: 18px; transform: none;
+      }
+      .lightbox-prev { left: 16px; }
+      .lightbox-next { right: 16px; }
     }
   </style>
 </head>
@@ -382,6 +453,16 @@
   </main>
 
   <footer>© 🔥Tune</footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+    <div class="lightbox-count" id="lb-count"></div>
+    <button type="button" class="lightbox-close" id="lb-close" aria-label="Закрыть">×</button>
+    <button type="button" class="lightbox-prev" id="lb-prev" aria-label="Предыдущее">‹</button>
+    <img class="lightbox-img" id="lb-img" alt="" />
+    <button type="button" class="lightbox-next" id="lb-next" aria-label="Следующее">›</button>
+    <div class="lightbox-cap" id="lb-cap"></div>
+  </div>
+
   <script>
     (function () {
       var buttons = document.querySelectorAll(".car-btn");
@@ -414,6 +495,100 @@
 
       var hash = (location.hash || "").replace("#gu-", "");
       if (hash === "2026" || hash === "2025") show(hash);
+
+      // Lightbox
+      var lb = document.getElementById("lightbox");
+      var lbImg = document.getElementById("lb-img");
+      var lbCap = document.getElementById("lb-cap");
+      var lbCount = document.getElementById("lb-count");
+      var items = [];
+      var index = 0;
+      var touchX = null;
+
+      function collect() {
+        var active = document.querySelector(".panel.is-active") || document;
+        var imgs = active.querySelectorAll(".shot:not(.placeholder) img");
+        items = [];
+        imgs.forEach(function (img) {
+          var cap = "";
+          var fig = img.closest("figure");
+          if (fig) {
+            var fc = fig.querySelector("figcaption");
+            if (fc) cap = fc.textContent.trim();
+          }
+          items.push({ src: img.currentSrc || img.src, alt: img.alt || "", cap: cap });
+        });
+      }
+
+      function render() {
+        if (!items.length) return;
+        var it = items[index];
+        lbImg.src = it.src;
+        lbImg.alt = it.alt;
+        lbCap.textContent = it.cap || it.alt || "";
+        lbCount.textContent = (index + 1) + " / " + items.length;
+      }
+
+      function openAt(i) {
+        collect();
+        if (!items.length) return;
+        index = ((i % items.length) + items.length) % items.length;
+        render();
+        lb.classList.add("is-open");
+        lb.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLb() {
+        lb.classList.remove("is-open");
+        lb.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        lbImg.removeAttribute("src");
+      }
+
+      function step(d) {
+        if (!items.length) return;
+        index = (index + d + items.length) % items.length;
+        render();
+      }
+
+      document.querySelectorAll(".shot:not(.placeholder) img").forEach(function (img) {
+        img.addEventListener("click", function () {
+          collect();
+          var src = img.currentSrc || img.src;
+          var i = items.findIndex(function (it) { return it.src === src; });
+          openAt(i >= 0 ? i : 0);
+        });
+      });
+
+      document.getElementById("lb-close").addEventListener("click", closeLb);
+      document.getElementById("lb-prev").addEventListener("click", function (e) {
+        e.stopPropagation();
+        step(-1);
+      });
+      document.getElementById("lb-next").addEventListener("click", function (e) {
+        e.stopPropagation();
+        step(1);
+      });
+      lb.addEventListener("click", function (e) {
+        if (e.target === lb) closeLb();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (!lb.classList.contains("is-open")) return;
+        if (e.key === "Escape") closeLb();
+        if (e.key === "ArrowLeft") step(-1);
+        if (e.key === "ArrowRight") step(1);
+      });
+      lb.addEventListener("touchstart", function (e) {
+        if (e.changedTouches && e.changedTouches[0]) touchX = e.changedTouches[0].clientX;
+      }, { passive: true });
+      lb.addEventListener("touchend", function (e) {
+        if (touchX == null || !e.changedTouches || !e.changedTouches[0]) return;
+        var dx = e.changedTouches[0].clientX - touchX;
+        touchX = null;
+        if (Math.abs(dx) < 40) return;
+        step(dx < 0 ? 1 : -1);
+      }, { passive: true });
     })();
   </script>
 </body>
