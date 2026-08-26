@@ -63,7 +63,23 @@ def load_cities() -> tuple[str, list[dict]]:
             raise SystemExit(f"cities[{i}] ({name}): нужны числовые x, y (%)") from e
         if not name or not code:
             raise SystemExit(f"cities[{i}]: нужны name и code")
-        out.append({"name": name, "code": code, "x": x, "y": y, "side": side})
+        cid = str(c.get("id", "")).strip().lower()
+        if not cid:
+            # fallback from Russian name
+            slug_map = {
+                "москва": "moscow",
+                "санкт-петербург": "spb",
+                "пермь": "perm",
+                "тула": "tula",
+                "казань": "kazan",
+                "краснодар": "krasnodar",
+                "нальчик": "nalchik",
+                "ярославль": "yaroslavl",
+            }
+            cid = slug_map.get(name.lower(), re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or f"city{i}")
+        out.append(
+            {"id": cid, "name": name, "code": code, "x": x, "y": y, "side": side}
+        )
     return role, out
 
 
@@ -349,8 +365,8 @@ def city_list_html(role: str, cities: list[dict]) -> str:
                     '        <div class="city">',
                     f'          <div class="city-mark">{c["code"]}</div>',
                     "          <div>",
-                    f"            <strong>{c['name']}</strong>",
-                    f"            <span>{role}</span>",
+                    f'            <strong data-i18n="city.{c["id"]}">{c["name"]}</strong>',
+                    f'            <span data-i18n="rep.role">{role}</span>',
                     "          </div>",
                     "        </div>",
                 ]
@@ -401,7 +417,9 @@ def update_home_html(cities: list[dict]) -> None:
         print(f"пропуск главной: нет {HOME_HTML}")
         return
     html = HOME_HTML.read_text(encoding="utf-8")
-    line = " · ".join(c["name"] for c in cities)
+    line = " · ".join(
+        f'<span data-i18n="city.{c["id"]}">{c["name"]}</span>' for c in cities
+    )
     if MARK_HOME_START in html and MARK_HOME_END in html:
         html = replace_between(html, MARK_HOME_START, MARK_HOME_END, line, inline=True)
     else:
