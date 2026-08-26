@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -243,6 +243,15 @@
       color: rgba(23, 35, 63, 0.5);
       font-size: 13px;
       font-weight: 700;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+    }
+    footer a {
+      color: var(--primary-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     @media (max-width: 800px) {
@@ -281,8 +290,8 @@
     <section class="card">
       <div class="kicker">Контакты · регионы</div>
       <h1>Представители</h1>
-      <p class="lead">Города, где есть представители Tune 🔥. По вопросам установки и активации — <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a>.</p>
-      <p class="lead" style="margin-top:12px">Готовы стать представителем — пишите в <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a>.</p>
+      <p class="lead">Города, где есть представители Tune 🔥. По вопросам установки и активации — <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a> или <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a>.</p>
+      <p class="lead" style="margin-top:12px">Готовы стать представителем — пишите в <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a> или звоните <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a>.</p>
 
       <div class="map-wrap">
         <img src="russia-cities.png" alt="Карта РФ: Москва, Санкт-Петербург, Пермь, Тула, Казань, Краснодар, Нальчик, Ярославль" width="1600" height="900" loading="lazy" />
@@ -351,11 +360,16 @@
 
       <div class="actions">
         <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Стать представителем</a>
+        <a class="btn btn-ghost" href="tel:+79047679977">+7 904 767-99-77</a>
         <a class="btn btn-ghost" href="../">На главную</a>
       </div>
     </section>
   </main>
 
-  <footer>© 🔥Tune</footer>
+  <footer>
+    <span>© 🔥Tune</span>
+    <a href="tel:+79047679977">+7 904 767-99-77</a>
+    <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener">@Publiclvoid</a>
+  </footer>
 </body>
 </html>
