@@ -84,6 +84,37 @@
       border-color: #bde9f9; box-shadow: 0 8px 20px rgba(25, 120, 170, 0.08);
     }
 
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 14px;
+      background: rgba(16, 33, 59, 0.06);
+      border: 1px solid rgba(39, 58, 101, 0.12);
+    }
+    .lang-btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      min-height: 34px;
+      min-width: 40px;
+      padding: 0 10px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      color: #52657c;
+      background: transparent;
+      transition: 0.18s;
+    }
+    .lang-btn:hover { color: var(--navy); background: rgba(255, 255, 255, 0.7); }
+    .lang-btn.is-active {
+      color: #101820;
+      background: linear-gradient(135deg, #11c5fa, #078fd5);
+      box-shadow: 0 6px 14px rgba(4, 151, 214, 0.28);
+    }
+
     .page { width: min(1040px, 92%); margin: 0 auto; padding: 120px 0 72px; }
     .breadcrumbs {
       display: flex; gap: 8px; margin-bottom: 22px;
@@ -107,8 +138,8 @@
       color: #17233f; font-weight: 900;
     }
     h2 {
-      font-size: clamp(22px, 3vw, 28px); font-weight: 900;
-      color: var(--navy); margin-bottom: 10px;
+      font-size: clamp(20px, 2.8vw, 28px); font-weight: 900;
+      color: var(--navy); margin-bottom: 10px; line-height: 1.25;
     }
     .lead {
       font-size: clamp(17px, 2.2vw, 20px); line-height: 1.65;
@@ -277,6 +308,7 @@
 
     @media (max-width: 800px) {
       .nav-links a:not(.btn) { display: none; }
+      .lang-switch { order: -1; }
       .points, .gallery { grid-template-columns: 1fr; }
       .card { padding: 24px; border-radius: 24px; }
       .shot.wide { grid-column: auto; }
@@ -290,21 +322,22 @@
     }
   </style>
 </head>
-<body>
+<body data-page="ui">
   <header class="navbar">
     <div class="nav-inner">
       <a class="logo" href="../">
         <div class="logo-mark" aria-hidden="true">🔥</div>
         <div>
           <strong>Tune</strong>
-          <small>FM для автомобиля</small>
+          <small data-i18n="nav.tagline">FM для автомобиля</small>
         </div>
       </a>
       <nav class="nav-links">
-        <a href="../#features">Возможности</a>
-        <a class="active" href="./">Интерфейс</a>
-        <a href="../#how">Как начать</a>
-        <a href="../predstaviteli/">Представители</a>
+        <a href="../#features" data-i18n="nav.features">Возможности</a>
+        <a class="active" href="./" data-i18n="nav.ui">Интерфейс</a>
+        <a href="../#how" data-i18n="nav.how">Как начать</a>
+        <a href="../predstaviteli/" data-i18n="nav.reps">Представители</a>
+        <div class="lang-switch" id="lang-switch"></div>
         <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Telegram</a>
       </nav>
     </div>
@@ -314,32 +347,32 @@
     <div class="breadcrumbs">
       <a href="../">🔥Tune</a>
       <span>›</span>
-      <span>Интерфейс</span>
+      <span data-i18n="ui.crumb">Интерфейс</span>
     </div>
 
     <section class="card">
-      <h1>Интерфейс</h1>
-      <p class="lead">Крупные кнопки, понятные жесты и оформление под любой салон. Настройки под разные вариации экрана: цветовые гаммы, шрифты и раскладки.</p>
+      <h1 data-i18n="ui.title">Интерфейс</h1>
+      <p class="lead" data-i18n="ui.lead">Крупные кнопки, понятные жесты и оформление под любой салон. Настройки под разные вариации экрана: цветовые гаммы, шрифты и раскладки.</p>
       <div class="points">
         <div class="point">
-          <strong>Удобство</strong>
-          <span>Всё под палец на ГУ: избранное, поиск, полный экран и кнопки на руле.</span>
+          <strong data-i18n="ui.comfort">Удобство</strong>
+          <span data-i18n="ui.comfort_t">Всё под палец на ГУ: избранное, поиск, полный экран и кнопки на руле.</span>
         </div>
         <div class="point">
-          <strong>Цвета</strong>
-          <span>Десятки схем — от ночи и графита до алого, меди и сапфира.</span>
+          <strong data-i18n="ui.colors">Цвета</strong>
+          <span data-i18n="ui.colors_t">Десятки схем — от ночи и графита до алого, меди и сапфира.</span>
         </div>
         <div class="point">
-          <strong>Шрифты</strong>
-          <span>Размер S–XL и набор шрифтов: системный, с засечками, скрипт и другие.</span>
+          <strong data-i18n="ui.fonts">Шрифты</strong>
+          <span data-i18n="ui.fonts_t">Размер S–XL и набор шрифтов: системный, с засечками, скрипт и другие.</span>
         </div>
       </div>
     </section>
 
     <section class="card">
-      <h2>Автомобили</h2>
-      <p class="note" style="margin-top:0;margin-bottom:16px">Выберите ГУ — покажем снимки именно с этой машины.</p>
-      <div class="car-switch" role="tablist" aria-label="Выбор автомобиля">
+      <h2 data-i18n="ui.cars">Автомобили - Подходит на большинство автомобилей с ГУ на Android!</h2>
+      <p class="note" style="margin-top:0;margin-bottom:16px" data-i18n="ui.cars_note">Выберите ГУ — покажем снимки именно с этой машины.</p>
+      <div class="car-switch" role="tablist" aria-label="Выбор автомобиля" data-i18n-attr="aria-label:ui.cars_aria">
         <button type="button" class="car-btn is-active" data-target="2025" role="tab" aria-selected="true">
           ГУ · Camry 80 · Highlander 2025
         </button>
@@ -348,72 +381,72 @@
         </button>
       </div>
       <div class="actions">
-        <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Получить активацию</a>
+        <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener" data-i18n="hero.activate">Получить активацию</a>
         <a class="btn btn-ghost" href="tel:+79047679977">+7 904 767-99-77</a>
-        <a class="btn btn-ghost" href="../">На главную</a>
+        <a class="btn btn-ghost" href="../" data-i18n="ui.home">На главную</a>
       </div>
     </section>
 
     <div id="panel-2025" class="panel is-active" data-car="2025">
       <section class="card">
-        <h2>Как выглядит на ГУ</h2>
-        <p class="note">Снимки: Toyota Camry 80 и Highlander 2025.</p>
+        <h2 data-i18n="ui.on_hu">Как выглядит на ГУ</h2>
+        <p class="note" data-i18n="ui.shots_2025">Снимки: Toyota Camry 80 и Highlander 2025.</p>
         <div class="gallery">
           <figure class="shot wide">
             <img src="media/home-visualizer.png" alt="Полный экран с визуализатором" loading="lazy" />
-            <figcaption>Полный экран и визуальный эквалайзер — яркость, прозрачность, стиль</figcaption>
+            <figcaption data-i18n="cap.full">Полный экран и визуальный эквалайзер — яркость, прозрачность, стиль</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/home-favorites.png" alt="Главный экран с избранным" loading="lazy" />
-            <figcaption>Главный экран: избранное и крупные стрелки</figcaption>
+            <figcaption data-i18n="cap.home_fav">Главный экран: избранное и крупные стрелки</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/home-bokeh.png" alt="Главный экран с фоном" loading="lazy" />
-            <figcaption>Чистый режим «сейчас играет»</figcaption>
+            <figcaption data-i18n="cap.now">Чистый режим «сейчас играет»</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/layout-list.png" alt="Раскладка список справа" loading="lazy" />
-            <figcaption>Раскладка со списком станций</figcaption>
+            <figcaption data-i18n="cap.list">Раскладка со списком станций</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/layout-list-cyan.png" alt="Список станций, циан" loading="lazy" />
-            <figcaption>Другая цветовая гамма — тот же удобный список</figcaption>
+            <figcaption data-i18n="cap.list2">Другая цветовая гамма — тот же удобный список</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/scale-green.png" alt="Шкала тюнера зелёная" loading="lazy" />
-            <figcaption>Шкала тюнера — станции на частотах</figcaption>
+            <figcaption data-i18n="cap.scale">Шкала тюнера — станции на частотах</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/scale-orange.png" alt="Шкала тюнера оранжевая" loading="lazy" />
-            <figcaption>Та же шкала в тёплой схеме</figcaption>
+            <figcaption data-i18n="cap.scale2">Та же шкала в тёплой схеме</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/colors.png" alt="Цветовые схемы" loading="lazy" />
-            <figcaption>Цветовые схемы под любой салон</figcaption>
+            <figcaption data-i18n="cap.schemes">Цветовые схемы под любой салон</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/fonts.png" alt="Выбор шрифта" loading="lazy" />
-            <figcaption>Шрифт и размер текста</figcaption>
+            <figcaption data-i18n="cap.font">Шрифт и размер текста</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/settings.png" alt="Настройки оформления" loading="lazy" />
-            <figcaption>Оформление: тема, эквалайзер, положение кнопок</figcaption>
+            <figcaption data-i18n="cap.look">Оформление: тема, эквалайзер, положение кнопок</figcaption>
           </figure>
           <figure class="shot">
             <img src="media/sound.png" alt="Настройки звука" loading="lazy" />
-            <figcaption>Звук: шумоподавление и эквалайзер</figcaption>
+            <figcaption data-i18n="cap.sound">Звук: шумоподавление и эквалайзер</figcaption>
           </figure>
         </div>
       </section>
 
       <section class="card">
-        <h2>Видео</h2>
+        <h2 data-i18n="ui.video">Видео</h2>
         <div class="videos">
           <div class="video-block">
             <video controls playsinline preload="metadata" poster="media/layout-list.png">
               <source src="media/demo-interface.mp4" type="video/mp4" />
             </video>
-            <p>Интерфейс в работе на ГУ</p>
+            <p data-i18n="ui.video_demo">Интерфейс в работе на ГУ</p>
           </div>
         </div>
       </section>
@@ -421,43 +454,43 @@
 
     <div id="panel-2026" class="panel" data-car="2026">
       <section class="card">
-        <h2>Как выглядит на ГУ</h2>
-        <p class="note">Снимки: Toyota Highlander 2026. Фото будут добавлены позже.</p>
+        <h2 data-i18n="ui.on_hu">Как выглядит на ГУ</h2>
+        <p class="note" data-i18n="ui.shots_2026">Снимки: Toyota Highlander 2026. Фото будут добавлены позже.</p>
         <div class="gallery">
           <figure class="shot wide placeholder">
-            <div class="ph">Фото главного экрана — скоро</div>
-            <figcaption>Главный экран Highlander 2026</figcaption>
+            <div class="ph" data-i18n="cap.ph_home">Фото главного экрана — скоро</div>
+            <figcaption data-i18n="cap.h26_home">Главный экран Highlander 2026</figcaption>
           </figure>
           <figure class="shot placeholder">
-            <div class="ph">Фото — скоро</div>
-            <figcaption>Список станций</figcaption>
+            <div class="ph" data-i18n="cap.ph">Фото — скоро</div>
+            <figcaption data-i18n="cap.h26_list">Список станций</figcaption>
           </figure>
           <figure class="shot placeholder">
-            <div class="ph">Фото — скоро</div>
-            <figcaption>Цветовые схемы</figcaption>
+            <div class="ph" data-i18n="cap.ph">Фото — скоро</div>
+            <figcaption data-i18n="cap.h26_colors">Цветовые схемы</figcaption>
           </figure>
           <figure class="shot placeholder">
-            <div class="ph">Фото — скоро</div>
-            <figcaption>Шрифты и размер</figcaption>
+            <div class="ph" data-i18n="cap.ph">Фото — скоро</div>
+            <figcaption data-i18n="cap.h26_fonts">Шрифты и размер</figcaption>
           </figure>
           <figure class="shot placeholder">
-            <div class="ph">Фото — скоро</div>
-            <figcaption>Настройки оформления</figcaption>
+            <div class="ph" data-i18n="cap.ph">Фото — скоро</div>
+            <figcaption data-i18n="cap.h26_look">Настройки оформления</figcaption>
           </figure>
           <figure class="shot placeholder">
-            <div class="ph">Фото — скоро</div>
-            <figcaption>Звук и эквалайзер</figcaption>
+            <div class="ph" data-i18n="cap.ph">Фото — скоро</div>
+            <figcaption data-i18n="cap.h26_sound">Звук и эквалайзер</figcaption>
           </figure>
         </div>
       </section>
 
       <section class="card">
-        <h2>Видео</h2>
-        <p class="note">Видео для Highlander 2026 появится здесь.</p>
+        <h2 data-i18n="ui.video">Видео</h2>
+        <p class="note" data-i18n="ui.video_soon">Видео для Highlander 2026 появится здесь.</p>
         <div class="gallery">
           <figure class="shot wide placeholder">
-            <div class="ph">Видео — скоро</div>
-            <figcaption>Демонстрация интерфейса на Highlander 2026</figcaption>
+            <div class="ph" data-i18n="cap.ph_video">Видео — скоро</div>
+            <figcaption data-i18n="cap.h26_demo">Демонстрация интерфейса на Highlander 2026</figcaption>
           </figure>
         </div>
       </section>
@@ -470,6 +503,7 @@
     <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener">@Publiclvoid</a>
     <span id="visit-count" hidden></span>
   </footer>
+  <script src="../js/i18n.js"></script>
   <script src="../js/visits.js" defer></script>
 
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр фото">

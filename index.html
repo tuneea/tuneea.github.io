@@ -128,6 +128,51 @@
       border-color: #bde9f9;
       box-shadow: 0 8px 20px rgba(25, 120, 170, 0.08);
     }
+    .btn-accent {
+      color: #fff;
+      background: linear-gradient(135deg, #ff9a1f 0%, #ff5b2e 55%, #ff3d6e 100%);
+      border-color: transparent;
+      box-shadow: 0 16px 34px rgba(255, 90, 40, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+      font-size: 16px;
+      min-height: 52px;
+      padding: 0 28px;
+      letter-spacing: 0.01em;
+    }
+    .btn-accent:hover {
+      filter: brightness(1.05);
+      box-shadow: 0 18px 40px rgba(255, 80, 30, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 14px;
+      background: rgba(16, 33, 59, 0.06);
+      border: 1px solid rgba(39, 58, 101, 0.12);
+    }
+    .lang-btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      min-height: 34px;
+      min-width: 40px;
+      padding: 0 10px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      color: #52657c;
+      background: transparent;
+      transition: 0.18s;
+    }
+    .lang-btn:hover { color: var(--navy); background: rgba(255, 255, 255, 0.7); }
+    .lang-btn.is-active {
+      color: #101820;
+      background: linear-gradient(135deg, #11c5fa, #078fd5);
+      box-shadow: 0 6px 14px rgba(4, 151, 214, 0.28);
+    }
 
     .page {
       width: min(1040px, 92%);
@@ -333,6 +378,7 @@
 
     @media (max-width: 800px) {
       .nav-links a:not(.btn) { display: none; }
+      .lang-switch { order: -1; }
       .grid, .grid-2 { grid-template-columns: 1fr; }
       .card { padding: 24px; border-radius: 24px; }
       .cta-band { flex-direction: column; align-items: flex-start; }
@@ -350,21 +396,22 @@
     }
   </style>
 </head>
-<body>
+<body data-page="home">
   <header class="navbar">
     <div class="nav-inner">
       <a class="logo" href="./">
         <div class="logo-mark" aria-hidden="true">🔥</div>
         <div>
           <strong>Tune</strong>
-          <small>FM для автомобиля</small>
+          <small data-i18n="nav.tagline">FM для автомобиля</small>
         </div>
       </a>
       <nav class="nav-links">
-        <a href="#features">Возможности</a>
-        <a href="interfejs/">Интерфейс</a>
-        <a href="#how">Как начать</a>
-        <a href="predstaviteli/">Представители</a>
+        <a href="#features" data-i18n="nav.features">Возможности</a>
+        <a href="interfejs/" data-i18n="nav.ui">Интерфейс</a>
+        <a href="#how" data-i18n="nav.how">Как начать</a>
+        <a href="predstaviteli/" data-i18n="nav.reps">Представители</a>
+        <div class="lang-switch" id="lang-switch"></div>
         <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Telegram</a>
       </nav>
     </div>
@@ -374,29 +421,29 @@
     <section class="card" id="go">
       <div class="hero-split">
         <div class="hero-copy">
-          <div class="kicker">FM-радио · для головного устройства</div>
+          <div class="kicker" data-i18n="hero.kicker">FM-радио · для головного устройства</div>
           <h1 class="brand-title"><span class="flame" aria-hidden="true">🔥</span>Tune</h1>
-          <p class="lead">Современное приложение управления FM-радио для автомобилей не оборудованных FM/AM приемником: удобный интерфейс, быстрый поиск станций и управление с руля.</p>
-          <p class="lead" style="margin-top:14px">Вы купили универсальный FM/AM Тюнер (Донгл) для Вашего автомобиля и вам нужен адаптивный удобный рабочий интерфейс который подойдет к Вашему головному устройству на базе Android? 🔥Tune — это ваш выбор.</p>
+          <p class="lead" data-i18n="hero.lead1">Современное приложение управления FM-радио для автомобилей не оборудованных FM/AM приемником: удобный интерфейс, быстрый поиск станций и управление с руля.</p>
+          <p class="lead" style="margin-top:14px" data-i18n="hero.lead2">Вы купили универсальный FM/AM Тюнер (Донгл) для Вашего автомобиля и вам нужен адаптивный удобный рабочий интерфейс который подойдет к Вашему головному устройству на базе Android? 🔥Tune — это ваш выбор.</p>
           <div class="actions">
-            <a class="btn btn-primary" id="go-dl" href="https://github.com/tuneea/tuneea.github.io/releases/latest">Скачать приложение</a>
-            <a class="btn btn-ghost" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Получить активацию</a>
+            <a class="btn btn-primary" id="go-dl" href="https://github.com/tuneea/tuneea.github.io/releases/latest" data-i18n="hero.download">Скачать приложение</a>
+            <a class="btn btn-ghost" href="https://t.me/Publiclvoid" target="_blank" rel="noopener" data-i18n="hero.activate">Получить активацию</a>
           </div>
         </div>
         <div class="hero-media">
-          <img src="media/dongle.png" alt="Универсальный FM/AM тюнер (донгл) с антенной" width="800" height="800" loading="eager" />
+          <img src="media/dongle.png" alt="Универсальный FM/AM тюнер (донгл) с антенной" width="800" height="800" loading="eager" data-i18n-attr="alt:hero.dongle_alt" />
         </div>
       </div>
     </section>
 
     <section class="card" id="features">
-      <h2>Почему выбирают Tune</h2>
-      <p class="section-lead">Приложение сделано для штатных ГУ: крупный интерфейс, понятное управление и стабильная работа.</p>
+      <h2 data-i18n="feat.title">Почему выбирают Tune</h2>
+      <p class="section-lead" data-i18n="feat.lead">Приложение сделано для штатных ГУ: крупный интерфейс, понятное управление и стабильная работа.</p>
       <div class="grid">
         <div class="mini">
           <div class="ico">FM</div>
-          <strong>Чистый эфир</strong>
-          <span>Быстрый скан, имена станций и удобное переключение на ходу.</span>
+          <strong data-i18n="feat.air">Чистый эфир</strong>
+          <span data-i18n="feat.air_t">Быстрый скан, имена станций и удобное переключение на ходу.</span>
         </div>
         <div class="mini">
           <div class="ico" aria-hidden="true">
@@ -406,83 +453,88 @@
               <path d="M12 5.5V9.8M5.8 14.2H18.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
-          <strong>Под автомобиль</strong>
-          <span>Экран и кнопки адаптированы под головное устройство. Управление с кнопок руля.</span>
+          <strong data-i18n="feat.car">Под автомобиль</strong>
+          <span data-i18n="feat.car_t">Экран и кнопки адаптированы под головное устройство. Управление с кнопок руля.</span>
         </div>
         <div class="mini">
           <div class="ico" aria-hidden="true">
             <img src="media/icon-settings.png" alt="" width="22" height="22" />
           </div>
-          <strong>Свои настройки</strong>
-          <span>Темы, раскладка, избранное и режимы — всё сделано, чтобы вы могли настроить под себя.</span>
+          <strong data-i18n="feat.set">Свои настройки</strong>
+          <span data-i18n="feat.set_t">Темы, раскладка, избранное и режимы — всё сделано, чтобы вы могли настроить под себя.</span>
         </div>
       </div>
       <div class="actions">
-        <a class="btn btn-ghost" href="interfejs/">Смотреть интерфейс</a>
+        <a class="btn btn-accent" href="interfejs/" data-i18n="feat.see_ui">Смотреть интерфейс</a>
       </div>
     </section>
 
     <section class="card" id="how">
-      <h2>Как начать</h2>
-      <p class="section-lead">Три простых шага — и радио уже на экране.</p>
+      <h2 data-i18n="how.title">Как начать</h2>
+      <p class="section-lead" data-i18n="how.lead">Три простых шага — и радио уже на экране.</p>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div>
-            <strong>Скачайте приложение</strong>
-            <span>Установите APK на головное устройство.</span>
+            <strong data-i18n="how.1">Скачайте приложение</strong>
+            <span data-i18n="how.1t">Установите APK на головное устройство.</span>
           </div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <div>
-            <strong>Напишите в Telegram</strong>
-            <span>Откройте @Publiclvoid и получите код активации по ID с экрана.</span>
+            <strong data-i18n="how.2">Напишите в Telegram</strong>
+            <span data-i18n="how.2t">Откройте @Publiclvoid и получите код активации по ID с экрана.</span>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div>
-            <strong>Слушайте радио</strong>
-            <span>Введите код один раз — и пользуйтесь Tune без ограничений.</span>
+            <strong data-i18n="how.3">Слушайте радио</strong>
+            <span data-i18n="how.3t">Введите код один раз — и пользуйтесь Tune без ограничений.</span>
           </div>
         </div>
       </div>
       <div class="actions">
-        <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Открыть @Publiclvoid</a>
+        <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener" data-i18n="how.open_tg">Открыть @Publiclvoid</a>
       </div>
     </section>
 
     <section class="card" id="partners">
-      <h2>Представители</h2>
-      <p class="section-lead">Установка и помощь на месте — в крупных городах России.</p>
-      <p class="section-lead" style="margin-top:12px">Готовы стать представителем — пишите в <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a> или звоните <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a>.</p>
+      <h2 data-i18n="partners.title">Представители</h2>
+      <p class="section-lead" data-i18n="partners.lead">Установка и помощь на месте — в крупных городах России.</p>
+      <p class="section-lead" style="margin-top:12px">
+        <span data-i18n="partners.become_before">Готовы стать представителем — пишите в</span>
+        <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a>
+        <span data-i18n="partners.or_call">или звоните</span>
+        <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a>.
+      </p>
       <div class="grid-2">
         <div class="mini">
           <div class="ico">📍</div>
-          <strong>Города</strong>
+          <strong data-i18n="partners.cities">Города</strong>
           <span><!-- MAP_CITIES_HOME:START -->Москва · Санкт-Петербург · Пермь · Тула · Казань · Краснодар · Нальчик · Ярославль<!-- MAP_CITIES_HOME:END --></span>
         </div>
         <div class="mini">
           <div class="ico">💬</div>
-          <strong>Связь</strong>
-          <span>Telegram @Publiclvoid · тел. <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a></span>
+          <strong data-i18n="partners.contact">Связь</strong>
+          <span><span data-i18n="partners.contact_t">Telegram @Publiclvoid · тел.</span> <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a></span>
         </div>
       </div>
       <div class="actions">
-        <a class="btn btn-ghost" href="predstaviteli/">Смотреть представителей</a>
-        <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Стать представителем</a>
+        <a class="btn btn-ghost" href="predstaviteli/" data-i18n="partners.see">Смотреть представителей</a>
+        <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener" data-i18n="partners.become">Стать представителем</a>
       </div>
     </section>
 
     <section class="card">
       <div class="cta-band">
         <div>
-          <h2>Готовы поставить 🔥Tune?</h2>
-          <p class="lead">Скачайте приложение и напишите в Telegram или позвоните — поможем с активацией.</p>
+          <h2 data-i18n="cta.title">Готовы поставить 🔥Tune?</h2>
+          <p class="lead" data-i18n="cta.lead">Скачайте приложение и напишите в Telegram или позвоните — поможем с активацией.</p>
         </div>
         <div class="actions" style="margin-top:0">
-          <a class="btn btn-primary" id="go-dl-2" href="https://github.com/tuneea/tuneea.github.io/releases/latest">Скачать</a>
+          <a class="btn btn-primary" id="go-dl-2" href="https://github.com/tuneea/tuneea.github.io/releases/latest" data-i18n="cta.download">Скачать</a>
           <a class="btn btn-ghost" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Telegram</a>
           <a class="btn btn-ghost" href="tel:+79047679977">+7 904 767-99-77</a>
         </div>
@@ -496,6 +548,7 @@
     <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener">@Publiclvoid</a>
     <span id="visit-count" hidden></span>
   </footer>
+  <script src="js/i18n.js"></script>
   <script src="js/visits.js" defer></script>
   <script>
     fetch("api/go/latest.json", { cache: "no-store" })

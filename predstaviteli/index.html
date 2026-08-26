@@ -121,6 +121,37 @@
       box-shadow: 0 8px 20px rgba(25, 120, 170, 0.08);
     }
 
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 14px;
+      background: rgba(16, 33, 59, 0.06);
+      border: 1px solid rgba(39, 58, 101, 0.12);
+    }
+    .lang-btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      min-height: 34px;
+      min-width: 40px;
+      padding: 0 10px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      color: #52657c;
+      background: transparent;
+      transition: 0.18s;
+    }
+    .lang-btn:hover { color: var(--navy); background: rgba(255, 255, 255, 0.7); }
+    .lang-btn.is-active {
+      color: #101820;
+      background: linear-gradient(135deg, #11c5fa, #078fd5);
+      box-shadow: 0 6px 14px rgba(4, 151, 214, 0.28);
+    }
+
     .page {
       width: min(1040px, 92%);
       margin: 0 auto;
@@ -261,25 +292,27 @@
 
     @media (max-width: 800px) {
       .nav-links a:not(.btn) { display: none; }
+      .lang-switch { order: -1; }
       .card { padding: 24px; border-radius: 24px; }
     }
   </style>
 </head>
-<body>
+<body data-page="reps">
   <header class="navbar">
     <div class="nav-inner">
       <a class="logo" href="../">
         <div class="logo-mark" aria-hidden="true">🔥</div>
         <div>
           <strong>Tune</strong>
-          <small>FM для автомобиля</small>
+          <small data-i18n="nav.tagline">FM для автомобиля</small>
         </div>
       </a>
       <nav class="nav-links">
-        <a href="../#features">Возможности</a>
-        <a href="../interfejs/">Интерфейс</a>
-        <a class="active" href="./">Представители</a>
-        <a href="../#how">Как начать</a>
+        <a href="../#features" data-i18n="nav.features">Возможности</a>
+        <a href="../interfejs/" data-i18n="nav.ui">Интерфейс</a>
+        <a class="active" href="./" data-i18n="nav.reps">Представители</a>
+        <a href="../#how" data-i18n="nav.how">Как начать</a>
+        <div class="lang-switch" id="lang-switch"></div>
         <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Telegram</a>
       </nav>
     </div>
@@ -289,17 +322,27 @@
     <div class="breadcrumbs">
       <a href="../">Tune 🔥</a>
       <span>›</span>
-      <span>Представители</span>
+      <span data-i18n="rep.title">Представители</span>
     </div>
 
     <section class="card">
-      <div class="kicker">Контакты · регионы</div>
-      <h1>Представители</h1>
-      <p class="lead">Города, где есть представители Tune 🔥. По вопросам установки и активации — <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a> или <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a>.</p>
-      <p class="lead" style="margin-top:12px">Готовы стать представителем — пишите в <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a> или звоните <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a>.</p>
+      <div class="kicker" data-i18n="rep.kicker">Контакты · регионы</div>
+      <h1 data-i18n="rep.title">Представители</h1>
+      <p class="lead">
+        <span data-i18n="rep.lead_before">Города, где есть представители Tune 🔥. По вопросам установки и активации —</span>
+        <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a>
+        <span data-i18n="rep.lead_or">или</span>
+        <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a>.
+      </p>
+      <p class="lead" style="margin-top:12px">
+        <span data-i18n="rep.become_before">Готовы стать представителем — пишите в</span>
+        <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener" style="color:var(--primary-dark);text-decoration:underline">@Publiclvoid</a>
+        <span data-i18n="rep.or_call">или звоните</span>
+        <a href="tel:+79047679977" style="color:var(--primary-dark);text-decoration:underline">+7&nbsp;904&nbsp;767-99-77</a>.
+      </p>
 
       <div class="map-wrap">
-        <img src="russia-cities.png" alt="Карта РФ: Москва, Санкт-Петербург, Пермь, Тула, Казань, Краснодар, Нальчик, Ярославль" width="1600" height="900" loading="lazy" />
+        <img src="russia-cities.png" alt="Карта РФ: Москва, Санкт-Петербург, Пермь, Тула, Казань, Краснодар, Нальчик, Ярославль" width="1600" height="900" loading="lazy" data-i18n-attr="alt:rep.map_alt" />
       </div>
 
       <div class="city-list">
@@ -308,65 +351,65 @@
           <div class="city-mark">МСК</div>
           <div>
             <strong>Москва</strong>
-            <span>Представитель</span>
+            <span data-i18n="rep.role">Представитель</span>
           </div>
         </div>
         <div class="city">
           <div class="city-mark">СПБ</div>
           <div>
             <strong>Санкт-Петербург</strong>
-            <span>Представитель</span>
+            <span data-i18n="rep.role">Представитель</span>
           </div>
         </div>
         <div class="city">
           <div class="city-mark">ПРМ</div>
           <div>
             <strong>Пермь</strong>
-            <span>Представитель</span>
+            <span data-i18n="rep.role">Представитель</span>
           </div>
         </div>
         <div class="city">
           <div class="city-mark">ТУЛ</div>
           <div>
             <strong>Тула</strong>
-            <span>Представитель</span>
+            <span data-i18n="rep.role">Представитель</span>
           </div>
         </div>
         <div class="city">
           <div class="city-mark">КЗН</div>
           <div>
             <strong>Казань</strong>
-            <span>Представитель</span>
+            <span data-i18n="rep.role">Представитель</span>
           </div>
         </div>
         <div class="city">
           <div class="city-mark">КРД</div>
           <div>
             <strong>Краснодар</strong>
-            <span>Представитель</span>
+            <span data-i18n="rep.role">Представитель</span>
           </div>
         </div>
         <div class="city">
           <div class="city-mark">НЛЧ</div>
           <div>
             <strong>Нальчик</strong>
-            <span>Представитель</span>
+            <span data-i18n="rep.role">Представитель</span>
           </div>
         </div>
         <div class="city">
           <div class="city-mark">ЯРЛ</div>
           <div>
             <strong>Ярославль</strong>
-            <span>Представитель</span>
+            <span data-i18n="rep.role">Представитель</span>
           </div>
         </div>
       <!-- MAP_CITIES:END -->
       </div>
 
       <div class="actions">
-        <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Стать представителем</a>
+        <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener" data-i18n="partners.become">Стать представителем</a>
         <a class="btn btn-ghost" href="tel:+79047679977">+7 904 767-99-77</a>
-        <a class="btn btn-ghost" href="../">На главную</a>
+        <a class="btn btn-ghost" href="../" data-i18n="ui.home">На главную</a>
       </div>
     </section>
   </main>
@@ -377,6 +420,7 @@
     <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener">@Publiclvoid</a>
     <span id="visit-count" hidden></span>
   </footer>
+  <script src="../js/i18n.js"></script>
   <script src="../js/visits.js" defer></script>
 </body>
 </html>
