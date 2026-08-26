@@ -2,5 +2,5 @@
   "status": "ok",
   "service": "TUNE diagnostics stub",
   "note": "GitHub Pages is GET-only. App POST telemetry is disabled. Replace with a Worker/backend later if needed.",
-  "telegram": "@tuneea_bot"
+  "telegram": "@Publiclvoid"
 }
