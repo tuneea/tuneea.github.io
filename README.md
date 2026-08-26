@@ -5,6 +5,7 @@
 | Что | URL |
 |-----|-----|
 | Лендинг | https://tuneea.github.io/ |
+| Представители | https://tuneea.github.io/predstaviteli/ |
 | Tuneea latest | https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/latest.json |
 | TUNE Radio latest | https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/app/latest.json |
 
