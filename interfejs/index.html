@@ -142,14 +142,16 @@
       margin: 0; border-radius: 18px; overflow: hidden;
       border: 1px solid var(--line); background: #0b1220;
       box-shadow: 0 10px 28px rgba(21, 126, 176, 0.1);
+      display: flex; flex-direction: column;
     }
     .shot img {
       display: block; width: 100%; height: auto;
-      aspect-ratio: 16 / 9; object-fit: cover; object-position: center top;
+      object-fit: contain; background: #0b1220;
     }
     .shot figcaption {
       padding: 12px 14px; background: #fff;
       color: var(--muted); font-size: 13px; font-weight: 700; line-height: 1.4;
+      margin-top: auto;
     }
     .shot.wide { grid-column: 1 / -1; }
 
