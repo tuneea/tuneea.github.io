@@ -108,8 +108,8 @@
       "city.krasnodar": "Краснодар",
       "city.nalchik": "Нальчик",
       "city.yaroslavl": "Ярославль",
-      "visits.hits": "Заходов",
-      "visits.guests": "гостей",
+      "visits.hits": "Просмотров",
+      "visits.guests": "посетителей",
       "lang.label": "Язык"
     },
     en: {
@@ -216,8 +216,8 @@
       "city.krasnodar": "Krasnodar",
       "city.nalchik": "Nalchik",
       "city.yaroslavl": "Yaroslavl",
-      "visits.hits": "Visits",
-      "visits.guests": "guests",
+      "visits.hits": "Views",
+      "visits.guests": "visitors",
       "lang.label": "Language"
     },
     ar: {
@@ -324,8 +324,8 @@
       "city.krasnodar": "كراسنودار",
       "city.nalchik": "نالتشيك",
       "city.yaroslavl": "ياروسلافل",
-      "visits.hits": "الزيارات",
-      "visits.guests": "زوار",
+      "visits.hits": "المشاهدات",
+      "visits.guests": "الزوار",
       "lang.label": "اللغة"
     },
     zh: {
@@ -432,7 +432,7 @@
       "city.krasnodar": "克拉斯诺达尔",
       "city.nalchik": "纳尔奇克",
       "city.yaroslavl": "雅罗斯拉夫尔",
-      "visits.hits": "访问",
+      "visits.hits": "浏览量",
       "visits.guests": "访客",
       "lang.label": "语言"
     }
