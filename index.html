@@ -325,6 +325,11 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    #visit-count {
+      margin-left: auto;
+      color: rgba(23, 35, 63, 0.55);
+      font-variant-numeric: tabular-nums;
+    }
 
     @media (max-width: 800px) {
       .nav-links a:not(.btn) { display: none; }
@@ -489,7 +494,9 @@
     <span>© 🔥Tune</span>
     <a href="tel:+79047679977">+7 904 767-99-77</a>
     <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener">@Publiclvoid</a>
+    <span id="visit-count" hidden></span>
   </footer>
+  <script src="js/visits.js" defer></script>
   <script>
     fetch("api/go/latest.json", { cache: "no-store" })
       .then(function (r) { return r.json(); })
