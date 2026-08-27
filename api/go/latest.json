@@ -3,7 +3,7 @@
   "versionCode": 152,
   "versionName": "0.8.16",
   "title": "Tuneea",
-  "changelog": "Autostart",
+  "changelog": "Autostart off also disables Accessibility service. Fullscreen mute and power use theme accent beside logo.",
   "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.16/tuneea.apk",
   "sha256": "a6c7c5f901dbe512988cb7c83f1db9a10ebc218370bbebfac2e40e54552fddac",
   "apkSize": 69036301,
