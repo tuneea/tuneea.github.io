@@ -3,7 +3,7 @@
   "versionCode": 154,
   "versionName": "0.8.18",
   "title": "Tuneea",
-  "changelog": "In-app",
+  "changelog": "In-app update retries download and stays in Tuneea. SCAN rebuilds the station list after a city change.",
   "downloadUrl": "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
   "sha256": "2dc327f31f19901ee24604c5ee236ef8c6ba31f28a073bcfab0efe9c8541fd3f",
   "apkSize": 13883186,
