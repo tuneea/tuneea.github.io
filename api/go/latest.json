@@ -1,15 +1,15 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 152,
-  "versionName": "0.8.16",
+  "versionCode": 153,
+  "versionName": "0.8.17",
   "title": "Tuneea",
-  "changelog": "Autostart off also disables Accessibility service. Fullscreen mute and power use theme accent beside logo.",
-  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.16/tuneea.apk",
-  "sha256": "a6c7c5f901dbe512988cb7c83f1db9a10ebc218370bbebfac2e40e54552fddac",
-  "apkSize": 69036301,
+  "changelog": "SCAN rebuilds the station list after a city change and clears cached names.",
+  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.17/tuneea.apk",
+  "sha256": "190053694ab052f2951baa2c101e50b8df4f2243dc5e695b903f3eb4df9d9e00",
+  "apkSize": 13882606,
   "mandatory": false,
   "minAndroidApi": 28,
-  "publishedAt": "2026-08-27",
+  "publishedAt": "2026-09-02",
   "licenses": [
     {
       "id": "4Y656MDLSH",
