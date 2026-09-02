@@ -1,12 +1,12 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 153,
-  "versionName": "0.8.17",
+  "versionCode": 154,
+  "versionName": "0.8.18",
   "title": "Tuneea",
-  "changelog": "SCAN rebuilds the station list after a city change and clears cached names.",
-  "downloadUrl": "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.17/tuneea.apk",
-  "sha256": "190053694ab052f2951baa2c101e50b8df4f2243dc5e695b903f3eb4df9d9e00",
-  "apkSize": 13882606,
+  "changelog": "In-app",
+  "downloadUrl": "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
+  "sha256": "2dc327f31f19901ee24604c5ee236ef8c6ba31f28a073bcfab0efe9c8541fd3f",
+  "apkSize": 13883186,
   "mandatory": false,
   "minAndroidApi": 28,
   "publishedAt": "2026-09-02",
@@ -31,5 +31,9 @@
       "id": "UB6A444LQ6",
       "sig": "XKGF3BWXJQXYQMPGCM3CINNGZDCT6O7LP37EEFQF4BCBPY2ZDQMNITCD2NSGR4GTGI5HT33RZTXNVVBUCCEYPYAOCYWMJSMSZTBS2BQ"
     }
+  ],
+  "downloadUrls": [
+    "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
+    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.18/tuneea.apk"
   ]
 }
