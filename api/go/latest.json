@@ -4,7 +4,7 @@
   "versionName": "0.8.19",
   "title": "Tuneea",
   "changelog": "Scan shows progress and keeps station names. Tuner scale marks stations. Themes remember look. Standard theme on first install.",
-  "downloadUrl": "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
+  "downloadUrl": "https://tuneea.github.io/api/go/tuneea.apk",
   "sha256": "42448af038f80079b9f871ed83f43b77d7917d9617dea255a7b7aa2e6f9dffb6",
   "apkSize": 13915542,
   "mandatory": false,
@@ -33,6 +33,7 @@
     }
   ],
   "downloadUrls": [
+    "https://tuneea.github.io/api/go/tuneea.apk",
     "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
     "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.19/tuneea.apk"
   ]
