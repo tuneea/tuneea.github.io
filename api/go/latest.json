@@ -3,11 +3,37 @@
   "versionCode": 155,
   "versionName": "0.8.19",
   "title": "Tuneea",
-  "changelog": "\",
+  "changelog": "Scan shows progress and keeps station names. Tuner scale marks stations. Themes remember look. Standard theme on first install.",
   "downloadUrl": "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
   "sha256": "42448af038f80079b9f871ed83f43b77d7917d9617dea255a7b7aa2e6f9dffb6",
   "apkSize": 13915542,
   "mandatory": false,
   "minAndroidApi": 28,
-  "publishedAt": "2026-09-04"
+  "publishedAt": "2026-09-04",
+  "licenses": [
+    {
+      "id": "4Y656MDLSH",
+      "sig": "DYWZXJ6R4CZCJFY7HZ3BXGUPHTQWUN2DENCZTVGXVVR4ZGLYJSPXQOBSBOUWHCXUYC255JMJNOGYMKFZLFBUVZIJCWB4MM7TZOGXMDQ"
+    },
+    {
+      "id": "5ZHLMI6OCL",
+      "sig": "L5LRDS75HCJKXY5ZBO4QSGIQVY6MC4MLUNJYT7BCIILR3UXLMGRAVWD2TMVSENA4YCVZBPHPVDJTI33SS4I6QCNHDCKFJYOYRJYJYCA"
+    },
+    {
+      "id": "TUNENGG4J7ZEPR23HNQEI3AA",
+      "sig": "4R6RYJI3NTSEQFAXOKEBG5NUL5K4H2IOSC2D5RAH2RTQZYJ7BL2TS7MJGPZWSLR33BI2R7LNH634ZVMCRMHH25WABZXPO7MHUPU2MDY"
+    },
+    {
+      "id": "NGG4J7ZEPR",
+      "sig": "HI3FZNUXNQRTGT3SAPILBWL7CEBDTZ7JB4BDQG73RRGXTCFF6M5IIR64CDAJCO5LTEC6BKH4YUIQVSC6OQJAHIOZOUZ3M3SHTUC34AQ"
+    },
+    {
+      "id": "UB6A444LQ6",
+      "sig": "XKGF3BWXJQXYQMPGCM3CINNGZDCT6O7LP37EEFQF4BCBPY2ZDQMNITCD2NSGR4GTGI5HT33RZTXNVVBUCCEYPYAOCYWMJSMSZTBS2BQ"
+    }
+  ],
+  "downloadUrls": [
+    "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
+    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.19/tuneea.apk"
+  ]
 }
