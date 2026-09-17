@@ -1,15 +1,15 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 155,
-  "versionName": "0.8.19",
+  "versionCode": 156,
+  "versionName": "0.8.20",
   "title": "Tuneea",
-  "changelog": "Scan shows progress and keeps station names. Tuner scale marks stations. Themes remember look. Standard theme on first install.",
+  "changelog": "HU can download licenses and updates from GitHub again.",
   "downloadUrl": "https://tuneea.github.io/api/go/tuneea.apk",
-  "sha256": "42448af038f80079b9f871ed83f43b77d7917d9617dea255a7b7aa2e6f9dffb6",
-  "apkSize": 13915542,
+  "sha256": "317788e8938dd609ff5d1e74319e6fa73fabe6c5c92f43cfea3fefed0174513b",
+  "apkSize": 13921054,
   "mandatory": false,
   "minAndroidApi": 28,
-  "publishedAt": "2026-09-04",
+  "publishedAt": "2026-09-17",
   "licenses": [
     {
       "id": "4Y656MDLSH",
@@ -47,6 +47,6 @@
   "downloadUrls": [
     "https://tuneea.github.io/api/go/tuneea.apk",
     "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
-    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.19/tuneea.apk"
+    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.20/tuneea.apk"
   ]
 }
