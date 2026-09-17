@@ -1,11 +1,11 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 156,
-  "versionName": "0.8.20",
+  "versionCode": 157,
+  "versionName": "0.8.21",
   "title": "Tuneea",
-  "changelog": "HU can download licenses and updates from GitHub again.",
+  "changelog": "License follows the plugged dongle.",
   "downloadUrl": "https://tuneea.github.io/api/go/tuneea.apk",
-  "sha256": "317788e8938dd609ff5d1e74319e6fa73fabe6c5c92f43cfea3fefed0174513b",
+  "sha256": "6c6fd0dc2904bdb7a3e4e713f0df890606361e22b6fdfa16cfa1c62b98d2aae4",
   "apkSize": 13921054,
   "mandatory": false,
   "minAndroidApi": 28,
@@ -55,6 +55,6 @@
   "downloadUrls": [
     "https://tuneea.github.io/api/go/tuneea.apk",
     "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
-    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.20/tuneea.apk"
+    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.21/tuneea.apk"
   ]
 }
