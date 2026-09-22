@@ -75,6 +75,7 @@ def load_cities() -> tuple[str, list[dict]]:
                 "краснодар": "krasnodar",
                 "нальчик": "nalchik",
                 "ярославль": "yaroslavl",
+                "екатеринбург": "ekaterinburg",
             }
             cid = slug_map.get(name.lower(), re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or f"city{i}")
         out.append(
