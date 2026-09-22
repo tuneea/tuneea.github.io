@@ -603,6 +603,18 @@
       setMeta("description", t("meta.desc"));
     }
 
+    function setId(id, key) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var val = t(key, el.textContent);
+      if (val && val !== key) el.textContent = val;
+    }
+    setId("how-2-title", "how.2");
+    setId("how-2t-a", "how.2t_a");
+    setId("how-2t-b", "how.2t_b");
+    setId("how-2t-c", "how.2t_c");
+    setId("how-open-max", "how.open_max");
+
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       var on = btn.getAttribute("data-lang") === lang;
       btn.classList.toggle("is-active", on);
