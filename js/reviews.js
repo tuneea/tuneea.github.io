@@ -47,11 +47,17 @@
     return el;
   }
 
+  function hasCards() {
+    var host = document.getElementById(BOX);
+    return !!(host && host.querySelector(".review-card"));
+  }
+
   function render(items) {
     var host = document.getElementById(BOX);
     if (!host) return;
-    host.innerHTML = "";
     if (!items.length) {
+      if (hasCards()) return;
+      host.innerHTML = "";
       var empty = document.createElement("p");
       empty.className = "review-empty";
       empty.setAttribute("data-i18n", "rev.empty");
@@ -59,6 +65,7 @@
       host.appendChild(empty);
       return;
     }
+    host.innerHTML = "";
     items.forEach(function (item) {
       host.appendChild(card(item));
     });
