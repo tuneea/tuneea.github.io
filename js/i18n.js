@@ -18,7 +18,8 @@
       "nav.reviews": "Отзывы",
       "nav.reps": "Представители",
       "rev.title": "Отзывы",
-      "rev.lead": "Имя, город и несколько слов о Tune — отправьте в Telegram или Max, и отзыв появится на странице.",
+      "rev.lead": "Отзыв отправьте удобным способом разработчику и он появится на странице.",
+      "rev.lead2": "Имя, город и несколько слов о Tune — отправьте в Telegram или Max.",
       "rev.name": "Имя",
       "rev.city": "Город",
       "rev.text": "Отзыв",
@@ -154,7 +155,8 @@
       "nav.reviews": "Reviews",
       "nav.reps": "Dealers",
       "rev.title": "Reviews",
-      "rev.lead": "Name, city and a few words about Tune — send it in Telegram or Max, and it will appear on this page.",
+      "rev.lead": "Send the review to the developer in any convenient way and it will appear on the page.",
+      "rev.lead2": "Name, city and a few words about Tune — send it in Telegram or Max.",
       "rev.name": "Name",
       "rev.city": "City",
       "rev.text": "Review",
@@ -290,7 +292,8 @@
       "nav.reviews": "التقييمات",
       "nav.reps": "الممثلون",
       "rev.title": "التقييمات",
-      "rev.lead": "الاسم والمدينة وكلمات عن Tune — أرسلها عبر تيليجرام أو Max لتظهر في هذه الصفحة.",
+      "rev.lead": "أرسل التقييم للمطور بالطريقة المناسبة وسيظهر في الصفحة.",
+      "rev.lead2": "الاسم والمدينة وكلمات عن Tune — أرسلها عبر تيليجرام أو Max.",
       "rev.name": "الاسم",
       "rev.city": "المدينة",
       "rev.text": "التقييم",
@@ -426,7 +429,8 @@
       "nav.reviews": "评价",
       "nav.reps": "代理",
       "rev.title": "评价",
-      "rev.lead": "姓名、城市和对 Tune 的几句话——通过 Telegram 或 Max 发送后会显示在本页。",
+      "rev.lead": "请用方便的方式把评价发给开发者，它会出现在页面上。",
+      "rev.lead2": "姓名、城市和对 Tune 的几句话——通过 Telegram 或 Max 发送。",
       "rev.name": "姓名",
       "rev.city": "城市",
       "rev.text": "评价",
@@ -627,6 +631,7 @@
     setId("how-2t-c", "how.2t_c");
     setId("how-open-max", "how.open_max");
     setId("rev-lead", "rev.lead");
+    setId("rev-lead2", "rev.lead2");
     setId("rev-send-tg", "rev.send");
     setId("rev-send-max", "rev.send_max");
 
