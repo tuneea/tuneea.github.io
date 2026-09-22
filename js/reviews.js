@@ -132,18 +132,6 @@
       });
   }
 
-  function reviewMsg(name, city, text) {
-    return "ОТЗЫВ Tune\nИмя: " + name + "\nГород: " + city + "\n\n" + text;
-  }
-
-  function openMessenger(via, msg) {
-    var url =
-      via === "max"
-        ? "https://max.ru/:share?text=" + encodeURIComponent(msg)
-        : "https://t.me/Publiclvoid?text=" + encodeURIComponent(msg);
-    window.open(url, "_blank", "noopener");
-  }
-
   function inbox() {
     var cfg = window.TuneReviewInbox || {};
     return { repo: cfg.repo || "tuneea/reviews", token: cfg.token || "" };
@@ -189,29 +177,16 @@
       setStatus(err, "Заполните имя, город и отзыв.", false);
       return;
     }
-    var via = (ev.submitter && ev.submitter.value) || "site";
     var item = { name: name, city: city, text: text, at: new Date().toISOString().slice(0, 10) };
-    if (via === "site") {
-      setStatus("rev.sending", "Отправка…", true);
-      publishSite(name, city, text)
-        .then(function () {
-          finishLocal(form, item);
-          setStatus("rev.ok_site", "Спасибо! Отзыв уходит на сайт и скоро появится у всех.", true);
-        })
-        .catch(function () {
-          openMessenger("tg", reviewMsg(name, city, text));
-          finishLocal(form, item);
-          setStatus("rev.ok_tg", "Отзыв открыт в Telegram — отправьте сообщение, и он появится на сайте.", true);
-        });
-      return;
-    }
-    openMessenger(via, reviewMsg(name, city, text));
-    finishLocal(form, item);
-    if (via === "max") {
-      setStatus("rev.ok_max", "Отзыв открыт в Max — отправьте сообщение на 8 904 767-99-77, и он появится на сайте.", true);
-    } else {
-      setStatus("rev.ok_tg", "Отзыв открыт в Telegram — отправьте сообщение, и он появится на сайте.", true);
-    }
+    setStatus("rev.sending", "Отправка…", true);
+    publishSite(name, city, text)
+      .then(function () {
+        finishLocal(form, item);
+        setStatus("rev.ok_site", "Спасибо! Отзыв уходит на сайт и скоро появится у всех.", true);
+      })
+      .catch(function () {
+        setStatus("rev.fail", "Не отправилось. Попробуйте ещё раз.", false);
+      });
   }
 
   function mount() {

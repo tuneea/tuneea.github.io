@@ -18,8 +18,8 @@
       "nav.reviews": "Отзывы",
       "nav.reps": "Представители",
       "rev.title": "Отзывы",
-      "rev.lead": "Отзыв отправьте удобным способом разработчику и он появится на странице.",
-      "rev.lead2": "Имя, город и несколько слов о Tune — отправьте в Telegram или Max.",
+      "rev.lead": "Отзыв отправьте разработчику и он появится на странице.",
+      "rev.lead2": "Имя, город и несколько слов о Tune — Опубликовать на сайте.",
       "rev.name": "Имя",
       "rev.city": "Город",
       "rev.text": "Отзыв",
@@ -30,6 +30,7 @@
       "rev.send_max": "Max",
       "rev.send_site": "Опубликовать на сайте",
       "rev.ok_site": "Спасибо! Отзыв уходит на сайт и скоро появится у всех.",
+      "rev.fail": "Не отправилось. Попробуйте ещё раз.",
       "rev.empty": "Пока нет отзывов — напишите первый.",
       "rev.need_all": "Заполните имя, город и текст отзыва.",
       "rev.too_short": "Напишите чуть подробнее — от 15 символов.",
@@ -157,8 +158,8 @@
       "nav.reviews": "Reviews",
       "nav.reps": "Dealers",
       "rev.title": "Reviews",
-      "rev.lead": "Send the review to the developer in any convenient way and it will appear on the page.",
-      "rev.lead2": "Name, city and a few words about Tune — send it in Telegram or Max.",
+      "rev.lead": "Send the review to the developer and it will appear on the page.",
+      "rev.lead2": "Name, city and a few words about Tune — Publish on the site.",
       "rev.name": "Name",
       "rev.city": "City",
       "rev.text": "Review",
@@ -169,6 +170,7 @@
       "rev.send_max": "Max",
       "rev.send_site": "Publish on the site",
       "rev.ok_site": "Thank you! The review is going to the site and will appear for everyone shortly.",
+      "rev.fail": "Could not send. Please try again.",
       "rev.empty": "No reviews yet — write the first one.",
       "rev.need_all": "Please fill in name, city and review text.",
       "rev.too_short": "Please write a bit more — at least 15 characters.",
@@ -296,8 +298,8 @@
       "nav.reviews": "التقييمات",
       "nav.reps": "الممثلون",
       "rev.title": "التقييمات",
-      "rev.lead": "أرسل التقييم للمطور بالطريقة المناسبة وسيظهر في الصفحة.",
-      "rev.lead2": "الاسم والمدينة وكلمات عن Tune — أرسلها عبر تيليجرام أو Max.",
+      "rev.lead": "أرسل التقييم للمطور وسيظهر في الصفحة.",
+      "rev.lead2": "الاسم والمدينة وكلمات عن Tune — نشر على الموقع.",
       "rev.name": "الاسم",
       "rev.city": "المدينة",
       "rev.text": "التقييم",
@@ -308,6 +310,7 @@
       "rev.send_max": "Max",
       "rev.send_site": "نشر على الموقع",
       "rev.ok_site": "شكراً! سيظهر التقييم على الموقع قريباً للجميع.",
+      "rev.fail": "تعذر الإرسال. حاول مرة أخرى.",
       "rev.empty": "لا توجد تقييمات بعد — اكتب الأول.",
       "rev.need_all": "املأ الاسم والمدينة ونص التقييم.",
       "rev.too_short": "اكتب أكثر قليلاً — 15 حرفاً على الأقل.",
@@ -435,8 +438,8 @@
       "nav.reviews": "评价",
       "nav.reps": "代理",
       "rev.title": "评价",
-      "rev.lead": "请用方便的方式把评价发给开发者，它会出现在页面上。",
-      "rev.lead2": "姓名、城市和对 Tune 的几句话——通过 Telegram 或 Max 发送。",
+      "rev.lead": "把评价发给开发者，它会出现在页面上。",
+      "rev.lead2": "姓名、城市和对 Tune 的几句话——发布到网站。",
       "rev.name": "姓名",
       "rev.city": "城市",
       "rev.text": "评价",
@@ -447,6 +450,7 @@
       "rev.send_max": "Max",
       "rev.send_site": "发布到网站",
       "rev.ok_site": "谢谢！评价正在发布到网站，很快对所有人可见。",
+      "rev.fail": "发送失败，请再试一次。",
       "rev.empty": "还没有评价——写下第一条。",
       "rev.need_all": "请填写姓名、城市和评价内容。",
       "rev.too_short": "请再写详细一些——至少 15 个字符。",
@@ -641,8 +645,6 @@
     setId("rev-lead", "rev.lead");
     setId("rev-lead2", "rev.lead2");
     setId("rev-send-site", "rev.send_site");
-    setId("rev-send-tg", "rev.send");
-    setId("rev-send-max", "rev.send_max");
 
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       var on = btn.getAttribute("data-lang") === lang;
