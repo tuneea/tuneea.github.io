@@ -11,6 +11,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PATH = ROOT / "api" / "reviews.json"
+TEXT_MIN = 15
+TEXT_MAX = 300
+PER_NAME = 2
+
+
+def name_key(s: str) -> str:
+    return " ".join((s or "").casefold().split())
 
 
 def ok_label(s: str) -> bool:
@@ -46,16 +53,20 @@ def parse_issue(title: str, body: str) -> tuple[str, str, str] | None:
 def main() -> int:
     name = clean(os.environ.get("NAME", ""), 40)
     city = clean(os.environ.get("CITY", ""), 40)
-    text = clean(os.environ.get("TEXT", ""), 500)
+    text = " ".join((os.environ.get("TEXT") or "").split()).strip()
     if not (name and city and text):
         parsed = parse_issue(os.environ.get("ISSUE_TITLE", ""), os.environ.get("ISSUE_BODY", ""))
         if parsed:
-            name, city, text = clean(parsed[0], 40), clean(parsed[1], 40), clean(parsed[2], 500)
+            name, city = clean(parsed[0], 40), clean(parsed[1], 40)
+            text = " ".join((parsed[2] or "").split()).strip()
     if not ok_label(name) or not ok_label(city):
         print("skip: bad name/city", file=sys.stderr)
         return 0
-    if len(text) < 15:
+    if len(text) < TEXT_MIN:
         print("skip: short text", file=sys.stderr)
+        return 0
+    if len(text) > TEXT_MAX:
+        print("skip: too long", file=sys.stderr)
         return 0
     if re.search(r"[<>]|https?://|www\.", text, re.I):
         print("skip: links/html", file=sys.stderr)
@@ -72,6 +83,10 @@ def main() -> int:
     item = {"name": name, "city": city, "text": text, "at": date.today().isoformat()}
     if any(x.get("name") == name and x.get("text") == text for x in items):
         print("skip: duplicate")
+        return 0
+    key = name_key(name)
+    if sum(1 for x in items if name_key(str(x.get("name") or "")) == key) >= PER_NAME:
+        print("skip: name quota", file=sys.stderr)
         return 0
     items.insert(0, item)
     PATH.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

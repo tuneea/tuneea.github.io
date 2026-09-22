@@ -6,7 +6,9 @@
   var NAME_MAX = 40;
   var CITY_MAX = 40;
   var TEXT_MIN = 15;
-  var TEXT_MAX = 500;
+  var TEXT_MAX = 300;
+  var PER_NAME = 2;
+  var QUOTA_KEY = "tuneea_reviews_quota";
 
   function t(key, fallback) {
     var i18n = window.TuneI18n;
@@ -79,11 +81,43 @@
     el.className = "review-status" + (ok ? " is-ok" : " is-err");
   }
 
+  function normName(s) {
+    return clean(s).toLowerCase();
+  }
+
+  function quotaUsed() {
+    var stored = 0;
+    try {
+      stored = parseInt(localStorage.getItem(QUOTA_KEY) || "0", 10) || 0;
+    } catch (e) {}
+    return Math.max(stored, pending.length);
+  }
+
+  function nameUsed(name) {
+    var key = normName(name);
+    var n = 0;
+    pending.concat(published).forEach(function (item) {
+      if (normName(item.name) === key) n += 1;
+    });
+    return n;
+  }
+
+  function bumpQuota() {
+    var stored = 0;
+    try {
+      stored = parseInt(localStorage.getItem(QUOTA_KEY) || "0", 10) || 0;
+    } catch (e) {}
+    try {
+      localStorage.setItem(QUOTA_KEY, String(Math.min(PER_NAME, stored + 1)));
+    } catch (e) {}
+  }
+
   function validate(name, city, text) {
     if (!name || !city || !text) return "rev.need_all";
     if (name.length > NAME_MAX || city.length > CITY_MAX) return "rev.too_long";
     if (text.length < TEXT_MIN) return "rev.too_short";
     if (text.length > TEXT_MAX) return "rev.too_long";
+    if (quotaUsed() >= PER_NAME || nameUsed(name) >= PER_NAME) return "rev.limit";
     return "";
   }
 
@@ -166,9 +200,12 @@
 
   function finishLocal(form, item) {
     pending.unshift(item);
+    bumpQuota();
     savePending();
     render(shown());
     form.reset();
+    updateCount();
+    syncFormLock();
   }
 
   function submit(ev) {
@@ -181,7 +218,13 @@
     var text = clean(form.elements.text.value);
     var err = validate(name, city, text);
     if (err) {
-      setStatus(err, "Заполните имя, город и отзыв.", false);
+      var fallback =
+        err === "rev.limit"
+          ? "Можно оставить не больше двух отзывов."
+          : err === "rev.too_long"
+            ? "Слишком длинно. Текст — до 300 символов."
+            : "Заполните имя, город и отзыв.";
+      setStatus(err, fallback, false);
       return;
     }
     var item = { name: name, city: city, text: text, at: new Date().toISOString().slice(0, 10) };
@@ -196,17 +239,54 @@
       });
   }
 
+  function updateCount() {
+    var form = document.getElementById(FORM);
+    var el = document.getElementById("rev-count");
+    if (!form || !el || !form.elements.text) return;
+    el.textContent = clean(form.elements.text.value).length + " / " + TEXT_MAX;
+  }
+
+  function syncFormLock() {
+    var form = document.getElementById(FORM);
+    if (!form) return;
+    var btn = form.querySelector('button[type="submit"]');
+    var locked = quotaUsed() >= PER_NAME;
+    if (btn) btn.disabled = locked;
+    if (locked) {
+      setStatus("rev.limit", "Можно оставить не больше двух отзывов.", false);
+    }
+  }
+
   function mount() {
     if (!document.getElementById(BOX)) return;
-    load();
+    load().then(function () {
+      syncFormLock();
+    });
     var form = document.getElementById(FORM);
-    if (form) form.addEventListener("submit", submit);
+    if (form) {
+      form.addEventListener("submit", submit);
+      if (form.elements.text) {
+        form.elements.text.addEventListener("input", updateCount);
+      }
+      if (form.elements.name) {
+        form.elements.name.addEventListener("input", function () {
+          var name = clean(form.elements.name.value);
+          if (name && nameUsed(name) >= PER_NAME) {
+            setStatus("rev.limit", "Можно оставить не больше двух отзывов.", false);
+          }
+        });
+      }
+    }
+    updateCount();
     window.addEventListener("tuneea:lang", function () {
       render(shown());
       var st = document.getElementById(STATUS);
       if (st && st.getAttribute("data-key")) {
         st.textContent = t(st.getAttribute("data-key"), st.textContent);
       }
+      var hint = document.getElementById("rev-hint");
+      if (hint) hint.textContent = t("rev.hint", hint.textContent);
+      syncFormLock();
     });
   }
 

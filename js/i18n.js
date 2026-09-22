@@ -34,7 +34,9 @@
       "rev.empty": "Пока нет отзывов — напишите первый.",
       "rev.need_all": "Заполните имя, город и текст отзыва.",
       "rev.too_short": "Напишите чуть подробнее — от 15 символов.",
-      "rev.too_long": "Слишком длинно. Сократите имя, город или текст.",
+      "rev.too_long": "Слишком длинно. Текст — до 300 символов.",
+      "rev.limit": "Можно оставить не больше двух отзывов.",
+      "rev.hint": "До 300 символов. Не больше двух отзывов.",
       "rev.sending": "Отправка…",
       "rev.ok": "Спасибо! Отзыв появится на сайте.",
       "rev.ok_tg": "Отзыв открыт в Telegram — отправьте сообщение, и он появится на сайте.",
@@ -174,7 +176,9 @@
       "rev.empty": "No reviews yet — write the first one.",
       "rev.need_all": "Please fill in name, city and review text.",
       "rev.too_short": "Please write a bit more — at least 15 characters.",
-      "rev.too_long": "Too long. Shorten the name, city or text.",
+      "rev.too_long": "Too long. Review text can be up to 300 characters.",
+      "rev.limit": "You can post no more than two reviews.",
+      "rev.hint": "Up to 300 characters. No more than two reviews.",
       "rev.sending": "Sending…",
       "rev.ok": "Thank you! The review will appear on the site.",
       "rev.ok_tg": "The review opened in Telegram — send the message and it will appear on the site.",
@@ -314,7 +318,9 @@
       "rev.empty": "لا توجد تقييمات بعد — اكتب الأول.",
       "rev.need_all": "املأ الاسم والمدينة ونص التقييم.",
       "rev.too_short": "اكتب أكثر قليلاً — 15 حرفاً على الأقل.",
-      "rev.too_long": "طويل جداً. اختصر الاسم أو المدينة أو النص.",
+      "rev.too_long": "طويل جداً. النص حتى 300 حرف.",
+      "rev.limit": "يمكن نشر تقييمين فقط.",
+      "rev.hint": "حتى 300 حرف. لا أكثر من تقييمين.",
       "rev.sending": "جارٍ الإرسال…",
       "rev.ok": "شكراً! سيظهر التقييم على الموقع.",
       "rev.ok_tg": "فُتح التقييم في تيليجرام — أرسل الرسالة ليظهر على الموقع.",
@@ -454,7 +460,9 @@
       "rev.empty": "还没有评价——写下第一条。",
       "rev.need_all": "请填写姓名、城市和评价内容。",
       "rev.too_short": "请再写详细一些——至少 15 个字符。",
-      "rev.too_long": "太长了。请缩短姓名、城市或正文。",
+      "rev.too_long": "太长了。正文最多 300 个字符。",
+      "rev.limit": "每人最多两条评价。",
+      "rev.hint": "最多 300 个字符。不超过两条评价。",
       "rev.sending": "发送中…",
       "rev.ok": "谢谢！评价将出现在网站上。",
       "rev.ok_tg": "评价已在 Telegram 打开——发送消息后会显示在网站上。",
@@ -645,6 +653,7 @@
     setId("rev-lead", "rev.lead");
     setId("rev-lead2", "rev.lead2");
     setId("rev-send-site", "rev.send_site");
+    setId("rev-hint", "rev.hint");
 
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       var on = btn.getAttribute("data-lang") === lang;
