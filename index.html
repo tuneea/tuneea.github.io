@@ -344,6 +344,11 @@
       font-weight: 700;
       line-height: 1.45;
     }
+    .step a {
+      color: var(--primary-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
     .cta-band {
       display: flex;
@@ -548,8 +553,14 @@
         <div class="step">
           <div class="step-num">2</div>
           <div>
-            <strong data-i18n="how.2">Напишите в Telegram</strong>
-            <span data-i18n="how.2t">Откройте @Publiclvoid и получите код активации по ID с экрана.</span>
+            <strong data-i18n="how.2">Напишите в Telegram или Max</strong>
+            <span>
+              <span data-i18n="how.2t_a">Откройте</span>
+              <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener">@Publiclvoid</a>
+              <span data-i18n="how.2t_b">или напишите в Max по номеру</span>
+              <a href="https://max.ru/" target="_blank" rel="noopener">8&nbsp;904&nbsp;767-99-77</a>
+              <span data-i18n="how.2t_c">и получите код активации по ID с экрана.</span>
+            </span>
           </div>
         </div>
         <div class="step">
@@ -562,6 +573,7 @@
       </div>
       <div class="actions">
         <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener" data-i18n="how.open_tg">Открыть @Publiclvoid</a>
+        <a class="btn btn-ghost" href="https://max.ru/" target="_blank" rel="noopener" data-i18n="how.open_max">Написать в Max</a>
       </div>
     </section>
 
@@ -628,6 +640,7 @@
         <div class="actions" style="margin-top:0">
           <a class="btn btn-primary" id="go-dl-2" href="api/go/tuneea.apk" data-i18n="cta.download">Скачать</a>
           <a class="btn btn-ghost" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn btn-ghost" href="https://max.ru/" target="_blank" rel="noopener">Max</a>
           <a class="btn btn-ghost" href="tel:+79047679977">+7 904 767-99-77</a>
         </div>
       </div>
@@ -638,6 +651,7 @@
     <span>© 🔥Tune</span>
     <a href="tel:+79047679977">+7 904 767-99-77</a>
     <a href="https://t.me/Publiclvoid" target="_blank" rel="noopener">@Publiclvoid</a>
+    <a href="https://max.ru/" target="_blank" rel="noopener">Max</a>
     <span id="visit-count" hidden></span>
   </footer>
   <script src="js/i18n.js"></script>
