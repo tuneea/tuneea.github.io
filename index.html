@@ -354,6 +354,70 @@
     }
     .cta-band .lead { margin: 0; max-width: 28rem; }
 
+    .reviews-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 22px;
+      margin-top: 22px;
+      align-items: start;
+    }
+    .reviews-list { display: grid; gap: 12px; }
+    .review-card {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(21, 126, 176, 0.08);
+    }
+    .review-who {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .review-who strong { color: var(--navy); font-size: 16px; }
+    .review-city { color: var(--muted); font-size: 13px; font-weight: 800; }
+    .review-text {
+      color: rgba(23, 35, 63, 0.78);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .review-empty { color: var(--muted); font-weight: 700; }
+    .review-form {
+      display: grid;
+      gap: 12px;
+      padding: 20px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(21, 126, 176, 0.08);
+    }
+    .review-form label {
+      display: grid;
+      gap: 6px;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .review-form input,
+    .review-form textarea {
+      width: 100%;
+      border: 1px solid #c5e6f4;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+      font-weight: 700;
+      color: var(--text);
+      background: #f7fcff;
+    }
+    .review-form textarea { min-height: 120px; resize: vertical; }
+    .review-form .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+    .review-status { font-size: 13px; font-weight: 800; min-height: 1.2em; }
+    .review-status.is-ok { color: var(--green); }
+    .review-status.is-err { color: #d4534c; }
+
     footer {
       width: min(1040px, 92%);
       margin: 0 auto 40px;
@@ -381,7 +445,7 @@
       .lang-switch { order: -1; }
       .grid, .grid-2 { grid-template-columns: 1fr; }
       .card { padding: 24px; border-radius: 24px; }
-      .cta-band { flex-direction: column; align-items: flex-start; }
+      .reviews-wrap { grid-template-columns: 1fr; }
       .hero-split {
         grid-template-columns: 1fr;
         gap: 22px;
@@ -410,6 +474,7 @@
         <a href="#features" data-i18n="nav.features">Возможности</a>
         <a href="interfejs/" data-i18n="nav.ui">Интерфейс</a>
         <a href="#how" data-i18n="nav.how">Как начать</a>
+        <a href="#reviews" data-i18n="nav.reviews">Отзывы</a>
         <a href="predstaviteli/" data-i18n="nav.reps">Представители</a>
         <div class="lang-switch" id="lang-switch"></div>
         <a class="btn btn-primary" href="https://t.me/Publiclvoid" target="_blank" rel="noopener">Telegram</a>
@@ -527,6 +592,33 @@
       </div>
     </section>
 
+    <section class="card" id="reviews">
+      <h2 data-i18n="rev.title">Отзывы</h2>
+      <p class="section-lead" data-i18n="rev.lead">Имя, город и несколько слов о Tune — отзыв появится на этой странице.</p>
+      <div class="reviews-wrap">
+        <div id="reviews-list" class="reviews-list"></div>
+        <form id="review-form" class="review-form">
+          <label>
+            <span data-i18n="rev.name">Имя</span>
+            <input name="name" maxlength="40" autocomplete="name" required data-i18n-attr="placeholder:rev.name_ph" placeholder="Как к вам обращаться" />
+          </label>
+          <label>
+            <span data-i18n="rev.city">Город</span>
+            <input name="city" maxlength="40" autocomplete="address-level2" required data-i18n-attr="placeholder:rev.city_ph" placeholder="Москва" />
+          </label>
+          <label>
+            <span data-i18n="rev.text">Отзыв</span>
+            <textarea name="text" maxlength="500" required data-i18n-attr="placeholder:rev.text_ph" placeholder="Как Tune работает у вас в машине"></textarea>
+          </label>
+          <label class="hp" aria-hidden="true">
+            <input name="company" tabindex="-1" autocomplete="off" />
+          </label>
+          <p id="review-status" class="review-status" role="status"></p>
+          <button class="btn btn-primary" type="submit" data-i18n="rev.send">Опубликовать отзыв</button>
+        </form>
+      </div>
+    </section>
+
     <section class="card">
       <div class="cta-band">
         <div>
@@ -549,6 +641,7 @@
     <span id="visit-count" hidden></span>
   </footer>
   <script src="js/i18n.js"></script>
+  <script src="js/reviews.js" defer></script>
   <script src="js/visits.js" defer></script>
   <script>
     fetch("api/go/latest.json", { cache: "no-store" })
