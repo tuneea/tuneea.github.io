@@ -144,6 +144,38 @@
     window.open(url, "_blank", "noopener");
   }
 
+  function inbox() {
+    var cfg = window.TuneReviewInbox || {};
+    return { repo: cfg.repo || "tuneea/reviews", token: cfg.token || "" };
+  }
+
+  function publishSite(name, city, text) {
+    var cfg = inbox();
+    if (!cfg.token) return Promise.reject(new Error("no-token"));
+    return fetch("https://api.github.com/repos/" + cfg.repo + "/issues", {
+      method: "POST",
+      headers: {
+        Accept: "application/vnd.github+json",
+        Authorization: "Bearer " + cfg.token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: "[review] " + name + " · " + city,
+        body: text,
+      }),
+    }).then(function (r) {
+      if (r.status === 201 || r.ok) return r;
+      throw new Error("issue " + r.status);
+    });
+  }
+
+  function finishLocal(form, item) {
+    pending.unshift(item);
+    savePending();
+    render(shown());
+    form.reset();
+  }
+
   function submit(ev) {
     ev.preventDefault();
     var form = ev.target;
@@ -157,13 +189,24 @@
       setStatus(err, "Заполните имя, город и отзыв.", false);
       return;
     }
-    var via = (ev.submitter && ev.submitter.value) || "tg";
+    var via = (ev.submitter && ev.submitter.value) || "site";
     var item = { name: name, city: city, text: text, at: new Date().toISOString().slice(0, 10) };
+    if (via === "site") {
+      setStatus("rev.sending", "Отправка…", true);
+      publishSite(name, city, text)
+        .then(function () {
+          finishLocal(form, item);
+          setStatus("rev.ok_site", "Спасибо! Отзыв уходит на сайт и скоро появится у всех.", true);
+        })
+        .catch(function () {
+          openMessenger("tg", reviewMsg(name, city, text));
+          finishLocal(form, item);
+          setStatus("rev.ok_tg", "Отзыв открыт в Telegram — отправьте сообщение, и он появится на сайте.", true);
+        });
+      return;
+    }
     openMessenger(via, reviewMsg(name, city, text));
-    pending.unshift(item);
-    savePending();
-    render(shown());
-    form.reset();
+    finishLocal(form, item);
     if (via === "max") {
       setStatus("rev.ok_max", "Отзыв открыт в Max — отправьте сообщение на 8 904 767-99-77, и он появится на сайте.", true);
     } else {

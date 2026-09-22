@@ -26,8 +26,10 @@
       "rev.name_ph": "Как к вам обращаться",
       "rev.city_ph": "Москва",
       "rev.text_ph": "Как Tune работает у вас в машине",
-      "rev.send": "Отправить в Telegram",
-      "rev.send_max": "Отправить в Max",
+      "rev.send": "Telegram",
+      "rev.send_max": "Max",
+      "rev.send_site": "Опубликовать на сайте",
+      "rev.ok_site": "Спасибо! Отзыв уходит на сайт и скоро появится у всех.",
       "rev.empty": "Пока нет отзывов — напишите первый.",
       "rev.need_all": "Заполните имя, город и текст отзыва.",
       "rev.too_short": "Напишите чуть подробнее — от 15 символов.",
@@ -163,8 +165,10 @@
       "rev.name_ph": "Your name",
       "rev.city_ph": "Moscow",
       "rev.text_ph": "How Tune works in your car",
-      "rev.send": "Send in Telegram",
-      "rev.send_max": "Send in Max",
+      "rev.send": "Telegram",
+      "rev.send_max": "Max",
+      "rev.send_site": "Publish on the site",
+      "rev.ok_site": "Thank you! The review is going to the site and will appear for everyone shortly.",
       "rev.empty": "No reviews yet — write the first one.",
       "rev.need_all": "Please fill in name, city and review text.",
       "rev.too_short": "Please write a bit more — at least 15 characters.",
@@ -300,8 +304,10 @@
       "rev.name_ph": "كيف نناديك",
       "rev.city_ph": "موسكو",
       "rev.text_ph": "كيف يعمل Tune في سيارتك",
-      "rev.send": "إرسال عبر تيليجرام",
-      "rev.send_max": "إرسال عبر Max",
+      "rev.send": "تيليجرام",
+      "rev.send_max": "Max",
+      "rev.send_site": "نشر على الموقع",
+      "rev.ok_site": "شكراً! سيظهر التقييم على الموقع قريباً للجميع.",
       "rev.empty": "لا توجد تقييمات بعد — اكتب الأول.",
       "rev.need_all": "املأ الاسم والمدينة ونص التقييم.",
       "rev.too_short": "اكتب أكثر قليلاً — 15 حرفاً على الأقل.",
@@ -437,8 +443,10 @@
       "rev.name_ph": "怎么称呼您",
       "rev.city_ph": "莫斯科",
       "rev.text_ph": "Tune 在您车上的使用体验",
-      "rev.send": "通过 Telegram 发送",
-      "rev.send_max": "通过 Max 发送",
+      "rev.send": "Telegram",
+      "rev.send_max": "Max",
+      "rev.send_site": "发布到网站",
+      "rev.ok_site": "谢谢！评价正在发布到网站，很快对所有人可见。",
       "rev.empty": "还没有评价——写下第一条。",
       "rev.need_all": "请填写姓名、城市和评价内容。",
       "rev.too_short": "请再写详细一些——至少 15 个字符。",
@@ -632,6 +640,7 @@
     setId("how-open-max", "how.open_max");
     setId("rev-lead", "rev.lead");
     setId("rev-lead2", "rev.lead2");
+    setId("rev-send-site", "rev.send_site");
     setId("rev-send-tg", "rev.send");
     setId("rev-send-max", "rev.send_max");
 
