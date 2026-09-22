@@ -132,6 +132,18 @@
       });
   }
 
+  function reviewMsg(name, city, text) {
+    return "ОТЗЫВ Tune\nИмя: " + name + "\nГород: " + city + "\n\n" + text;
+  }
+
+  function openMessenger(via, msg) {
+    var url =
+      via === "max"
+        ? "https://max.ru/:share?text=" + encodeURIComponent(msg)
+        : "https://t.me/Publiclvoid?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank", "noopener");
+  }
+
   function submit(ev) {
     ev.preventDefault();
     var form = ev.target;
@@ -145,39 +157,18 @@
       setStatus(err, "Заполните имя, город и отзыв.", false);
       return;
     }
-    var btn = form.querySelector("button[type=submit]");
-    if (btn) btn.disabled = true;
-    setStatus("rev.sending", "Отправка…", true);
-
+    var via = (ev.submitter && ev.submitter.value) || "tg";
     var item = { name: name, city: city, text: text, at: new Date().toISOString().slice(0, 10) };
-    fetch("https://api.github.com/repos/tuneea/tuneea.github.io/dispatches", {
-      method: "POST",
-      headers: { Accept: "application/vnd.github+json", "Content-Type": "application/json" },
-      body: JSON.stringify({ event_type: "new-review", client_payload: item }),
-    })
-      .then(function (r) {
-        if (r.status === 204 || r.ok) {
-          pending.unshift(item);
-          savePending();
-          render(shown());
-          form.reset();
-          setStatus("rev.ok", "Спасибо! Отзыв появится на сайте.", true);
-          return;
-        }
-        throw new Error("dispatch");
-      })
-      .catch(function () {
-        var msg = "ОТЗЫВ Tune\nИмя: " + name + "\nГород: " + city + "\n\n" + text;
-        window.open("https://t.me/Publiclvoid?text=" + encodeURIComponent(msg), "_blank", "noopener");
-        pending.unshift(item);
-        savePending();
-        render(shown());
-        form.reset();
-        setStatus("rev.ok_tg", "Отзыв открыт в Telegram — отправьте сообщение, и он появится на сайте.", true);
-      })
-      .then(function () {
-        if (btn) btn.disabled = false;
-      });
+    openMessenger(via, reviewMsg(name, city, text));
+    pending.unshift(item);
+    savePending();
+    render(shown());
+    form.reset();
+    if (via === "max") {
+      setStatus("rev.ok_max", "Отзыв открыт в Max — отправьте сообщение на 8 904 767-99-77, и он появится на сайте.", true);
+    } else {
+      setStatus("rev.ok_tg", "Отзыв открыт в Telegram — отправьте сообщение, и он появится на сайте.", true);
+    }
   }
 
   function mount() {
