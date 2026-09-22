@@ -553,9 +553,10 @@
 
   var lang = detect();
 
-  function t(key) {
+  function t(key, fallback) {
     var pack = DICT[lang] || DICT.ru;
-    return pack[key] || DICT.ru[key] || key;
+    var val = (pack && pack[key]) || (DICT.ru && DICT.ru[key]) || "";
+    return val || fallback || key;
   }
 
   function apply() {
@@ -565,8 +566,11 @@
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var key = el.getAttribute("data-i18n");
       if (!key) return;
-      var val = t(key);
-      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+      var isField = el.tagName === "INPUT" || el.tagName === "TEXTAREA";
+      var fallback = isField ? el.getAttribute("placeholder") : el.textContent;
+      var val = t(key, fallback);
+      if (!val || val === key) return;
+      if (isField) {
         el.setAttribute("placeholder", val);
       } else {
         el.textContent = val;
@@ -579,7 +583,11 @@
       spec.split(";").forEach(function (pair) {
         var parts = pair.split(":");
         if (parts.length < 2) return;
-        el.setAttribute(parts[0].trim(), t(parts[1].trim()));
+        var attr = parts[0].trim();
+        var key = parts[1].trim();
+        var val = t(key, el.getAttribute(attr));
+        if (!val || val === key) return;
+        el.setAttribute(attr, val);
       });
     });
 

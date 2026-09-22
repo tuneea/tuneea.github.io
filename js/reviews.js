@@ -10,8 +10,11 @@
 
   function t(key, fallback) {
     var i18n = window.TuneI18n;
-    if (i18n && i18n.t) return i18n.t(key);
-    return fallback;
+    if (i18n && i18n.t) {
+      var val = i18n.t(key, fallback);
+      if (val && val !== key) return val;
+    }
+    return fallback || key;
   }
 
   function esc(s) {
