@@ -1,15 +1,15 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 158,
-  "versionName": "0.8.22",
+  "versionCode": 159,
+  "versionName": "0.8.23",
   "title": "Tuneea",
-  "changelog": "Activation screen can refresh tickets from GitHub.",
+  "changelog": "EQ off by default, idle fullscreen off, Manual search theme.",
   "downloadUrl": "https://tuneea.github.io/api/go/tuneea.apk",
-  "sha256": "6352b5fc15c55e2ee67e4580da4ba60a98520b25f3c18877fe44de50fe4be1b3",
-  "apkSize": 13922578,
+  "sha256": "a55249c3c92f9af3ebc3b4eebdb77da7d897c2da10846c4901e1a7db53720c29",
+  "apkSize": 13940078,
   "mandatory": false,
   "minAndroidApi": 28,
-  "publishedAt": "2026-09-17",
+  "publishedAt": "2026-10-08",
   "licenses": [
     {
       "id": "4Y656MDLSH",
@@ -119,6 +119,6 @@
   "downloadUrls": [
     "https://tuneea.github.io/api/go/tuneea.apk",
     "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
-    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.22/tuneea.apk"
+    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.23/tuneea.apk"
   ]
 }
