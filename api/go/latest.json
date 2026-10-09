@@ -1,15 +1,15 @@
 {
   "packageName": "pv.tune.ea",
-  "versionCode": 160,
-  "versionName": "0.8.24",
+  "versionCode": 161,
+  "versionName": "0.8.25",
   "title": "Tuneea",
-  "changelog": "Manual tune one step, favorites and wheel keep manual stations.",
+  "changelog": "Stable 0.8.22 restore. Manual search theme removed.",
   "downloadUrl": "https://tuneea.github.io/api/go/tuneea.apk",
-  "sha256": "49ec890fb251d50d154dcd4167059f4462a0f0e48a4a7c72cf7576c0f31b89ae",
-  "apkSize": 13940074,
+  "sha256": "af5fc6b518f7d50f6a27fabf334e759e85d112e4a25feda00725360d73e09f1d",
+  "apkSize": 13922578,
   "mandatory": false,
   "minAndroidApi": 28,
-  "publishedAt": "2026-10-08",
+  "publishedAt": "2026-10-09",
   "licenses": [
     {
       "id": "4Y656MDLSH",
@@ -119,6 +119,6 @@
   "downloadUrls": [
     "https://tuneea.github.io/api/go/tuneea.apk",
     "https://raw.githubusercontent.com/tuneea/tuneea.github.io/main/api/go/tuneea.apk",
-    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.24/tuneea.apk"
+    "https://github.com/tuneea/tuneea.github.io/releases/download/tuneea-0.8.25/tuneea.apk"
   ]
 }
